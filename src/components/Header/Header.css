@@ -1,11 +1,14 @@
 .main-header {
+  padding: 10px 0;
+}
+
+.main-header__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  height: 70px;
 }
 
 .main-header__title {
   font-size: 2rem;
+  font-weight: 700;
 }
