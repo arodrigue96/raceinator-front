@@ -5,7 +5,13 @@ import "./styles/styles.css";
 import "@fontsource/ubuntu/400.css";
 import "@fontsource/ubuntu/700.css";
 
-createRoot(document.querySelector(".root")!).render(
+const root = document.querySelector(".root");
+
+if (!root) {
+  throw new Error("Root does not exist");
+}
+
+createRoot(root).render(
   <StrictMode>
     <App />
   </StrictMode>,
