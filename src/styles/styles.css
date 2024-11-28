@@ -21,5 +21,8 @@ body {
 
 h1 {
   margin: 0;
-  font-size: 0;
+}
+
+.page-title {
+  font-size: 1.5rem;
 }
