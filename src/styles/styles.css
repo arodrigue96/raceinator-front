@@ -23,6 +23,19 @@ h1 {
   margin: 0;
 }
 
+p {
+  margin: 0;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: unset;
+}
+
 .page-title {
   font-size: 1.5rem;
+  margin-bottom: 20px;
+  padding-top: 34px;
+  font-weight: 700;
 }
