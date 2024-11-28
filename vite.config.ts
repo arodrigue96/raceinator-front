@@ -11,8 +11,13 @@ export default defineConfig({
     setupFiles: ["src/setupTest.ts"],
     coverage: {
       include: ["src/**/*.tsx", "src/**/*.ts"],
-      exclude: ["src/main.tsx", "src/vite-env.d.ts"],
-      reporter: [["lcov"]],
+      exclude: [
+        "src/main.tsx",
+        "src/vite-env.d.ts",
+        "src/**/*.test.tsx",
+        "src/**/*.test.ts",
+      ],
+      reporter: ["lcov", "text"],
     },
   },
 });
