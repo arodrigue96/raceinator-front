@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router";
 import Button from "./Button";
-import { MemoryRouter } from "react-router-dom";
 
 describe("Given the Button component", () => {
   describe("When it's rendered", () => {

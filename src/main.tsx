@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { RouterProvider } from "react-router-dom";
-import { router } from "./router";
+import { BrowserRouter } from "react-router";
+import AppRouter from "./router/AppRouter";
 import "@fontsource/ubuntu/700.css";
 import "@fontsource/ubuntu/400.css";
 import "@fontsource/ubuntu/500.css";
@@ -16,6 +16,8 @@ if (!root) {
 
 createRoot(root).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
   </StrictMode>,
 );
