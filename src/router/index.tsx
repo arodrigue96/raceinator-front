@@ -4,9 +4,9 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import App from "../App/App";
-import TeamsPage from "../../teams/pages/TeamsPage/TeamsPage";
+import App from "../components/App/App";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+import TeamsPage from "../teams/pages/TeamsPage/TeamsPage";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
