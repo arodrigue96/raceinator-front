@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import NotFoundPage from "./NotFoundPage";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router";
 
 describe("Given the NotFoundPage component", () => {
   describe("When it's rendered", () => {
