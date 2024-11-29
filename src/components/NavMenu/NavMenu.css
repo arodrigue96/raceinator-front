@@ -1,0 +1,17 @@
+.main-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f7f7f7;
+  padding: 30px 53px;
+}
+
+.main-navigation__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-navigation__text {
+  font-size: 0.75rem;
+}
