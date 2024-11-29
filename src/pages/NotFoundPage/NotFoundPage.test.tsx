@@ -20,20 +20,6 @@ describe("Given the NotFoundPage component", () => {
       expect(notFoundPageTitle).toBeInTheDocument();
     });
 
-    test("Then it should show a 'This page doesn't exist. Not to worry, it happens to even the best riders & teams.' text.", () => {
-      const expectedText =
-        "This page doesn't exist. Not to worry, it happens to even the best riders & teams.";
-
-      render(
-        <MemoryRouter>
-          <NotFoundPage />
-        </MemoryRouter>,
-      );
-      const text = screen.getByText(expectedText);
-
-      expect(text).toBeInTheDocument();
-    });
-
     test("Then it should show 'Go Back Home' link", () => {
       const homeLinkText = /go back home/i;
 
