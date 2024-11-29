@@ -39,3 +39,12 @@ a {
   padding-top: 34px;
   font-weight: 700;
 }
+
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  margin: 0 auto;
+  max-width: 500px;
+}
