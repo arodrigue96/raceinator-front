@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import App from "../components/App/App";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import TeamsPage from "../teams/pages/TeamsPage/TeamsPage";
+import TeamsPage from "../team/pages/TeamsPage/TeamsPage";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
