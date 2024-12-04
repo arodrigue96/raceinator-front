@@ -3,7 +3,7 @@ import { MemoryRouter } from "react-router";
 import Button from "./Button";
 
 describe("Given the Button component", () => {
-  describe("When it's rendered", () => {
+  describe("When it's rendered and receives 'Text'", () => {
     test("Then it should show a 'Test' link", () => {
       const buttonText = /Test/i;
 
