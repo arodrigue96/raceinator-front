@@ -1,8 +1,8 @@
 import { Team } from "../types";
-import { TeamClientStructure } from "./types";
+import { TeamsClientStructure } from "./types";
 
-class TeamClient implements TeamClientStructure {
-  private url = import.meta.env.VITE_API_URL;
+class TeamsClient implements TeamsClientStructure {
+  private readonly url = import.meta.env.VITE_API_URL;
 
   async getTeams(): Promise<Team[]> {
     const response = await fetch(`${this.url}/teams`);
@@ -13,4 +13,4 @@ class TeamClient implements TeamClientStructure {
   }
 }
 
-export default TeamClient;
+export default TeamsClient;
