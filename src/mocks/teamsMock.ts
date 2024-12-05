@@ -24,6 +24,6 @@ export const teamMock2: Team = {
   isOfficialTeam: true,
 };
 
-const teamsMock = [teamMock1, teamMock2];
+const teamsMock: Team[] = [teamMock1, teamMock2];
 
 export default teamsMock;
