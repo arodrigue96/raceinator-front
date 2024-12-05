@@ -1,5 +1,5 @@
 import { Team } from "../types";
 
-export interface TeamClientStructure {
+export interface TeamsClientStructure {
   getTeams(): Promise<Team[]>;
 }
