@@ -1,3 +1,7 @@
+.nav-container {
+  margin-top: 20px;
+}
+
 .main-navigation {
   display: flex;
   align-items: center;

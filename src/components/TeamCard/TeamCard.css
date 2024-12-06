@@ -1,6 +1,7 @@
 .team-card {
   display: flex;
   flex-direction: column;
+  gap: 20px;
   border-radius: 8px;
   border: 1px solid #e6e6e6;
   padding: 19px 16px;
@@ -9,4 +10,25 @@
 .team-card__name {
   font-size: 1.25rem;
   font-weight: 600;
+}
+
+.team-card__image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.team-card__information {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.team-card__riders {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-card__riders-title {
+  font-size: 1.125rem;
 }
