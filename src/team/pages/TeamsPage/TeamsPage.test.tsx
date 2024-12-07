@@ -10,9 +10,10 @@ describe("Given the TeamsPage component", () => {
 
       const loader = screen.getByLabelText(expectedLoaderText);
 
-      expect(loader).toBeInTheDocument();
+      expect(loader).toBeVisible();
     });
   });
+
   describe("When it is rendered", () => {
     test("Then it should show 'Teams' inside a heading", () => {
       const titleText = /teams/i;
