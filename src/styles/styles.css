@@ -56,3 +56,11 @@ ul {
   padding-top: 34px;
   font-weight: 700;
 }
+
+.toast-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+}

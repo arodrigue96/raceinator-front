@@ -1,0 +1,8 @@
+.toast__loading-error {
+  background-color: #fdaaaa;
+  color: #c30000;
+  font-size: 1.125rem;
+  border-radius: 10px;
+  padding: 20px;
+  font-weight: 500;
+}
