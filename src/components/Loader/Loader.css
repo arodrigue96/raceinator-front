@@ -1,0 +1,8 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  background-color: #fffd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
