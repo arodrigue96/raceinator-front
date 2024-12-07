@@ -8,13 +8,23 @@ interface TeamsListProps {
 
 const TeamsList: React.FC<TeamsListProps> = ({ teams }) => {
   return (
-    <ul className="teams-list">
-      {teams.map((team) => (
-        <li key={team._id}>
-          <TeamCard team={team} />
-        </li>
-      ))}
-    </ul>
+    <>
+      {teams.length > 0 && (
+        <link
+          rel="preload"
+          as="image"
+          href={teams[0].imageUrl}
+          fetchPriority="high"
+        />
+      )}
+      <ul className="teams-list">
+        {teams.map((team) => (
+          <li key={team._id}>
+            <TeamCard team={team} />
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 
