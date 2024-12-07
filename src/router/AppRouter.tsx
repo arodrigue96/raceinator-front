@@ -1,7 +1,13 @@
+import { lazy } from "react";
 import { Route, Navigate, Routes } from "react-router";
 import App from "../components/App/App";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import TeamsPage from "../team/pages/TeamsPage/TeamsPage";
+
+export const TeamsPage = lazy(
+  () => import("../team/pages/TeamsPage/TeamsPage"),
+);
+export const NotFoundPage = lazy(
+  () => import("../pages/NotFoundPage/NotFoundPage"),
+);
 
 const AppRouter: React.FC = () => {
   return (
