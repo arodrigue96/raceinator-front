@@ -2,6 +2,17 @@ import { render, screen } from "@testing-library/react";
 import TeamsPage from "./TeamsPage";
 
 describe("Given the TeamsPage component", () => {
+  describe("When it is loading the teams", () => {
+    test("Then it should show a spinner with 'Loading Spinner' text", () => {
+      const expectedLoaderText = /Loading Spinner/i;
+
+      render(<TeamsPage />);
+
+      const loader = screen.getByLabelText(expectedLoaderText);
+
+      expect(loader).toBeInTheDocument();
+    });
+  });
   describe("When it is rendered", () => {
     test("Then it should show 'Teams' inside a heading", () => {
       const titleText = /teams/i;
