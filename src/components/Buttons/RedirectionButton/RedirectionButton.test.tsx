@@ -9,7 +9,12 @@ describe("Given the RedirectionButton component", () => {
 
       render(
         <MemoryRouter>
-          <RedirectionButton text={"Test"} redirection={""} ariaLabel="" />
+          <RedirectionButton
+            text={"Test"}
+            redirection={""}
+            ariaLabel=""
+            buttonColor="grey"
+          />
         </MemoryRouter>,
       );
 
