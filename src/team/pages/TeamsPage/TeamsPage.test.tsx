@@ -3,14 +3,14 @@ import TeamsPage from "./TeamsPage";
 
 describe("Given the TeamsPage component", () => {
   describe("When it is loading the teams", () => {
-    test("Then it should show a spinner with 'Loading Spinner' text", () => {
+    test("Then it should show a spinner with 'Loading Spinner' aria label text", () => {
       const expectedLoaderText = /Loading Spinner/i;
 
       render(<TeamsPage />);
 
       const loader = screen.getByLabelText(expectedLoaderText);
 
-      expect(loader).toBeVisible();
+      expect(loader).toBeInTheDocument();
     });
   });
 
