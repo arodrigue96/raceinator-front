@@ -17,5 +17,19 @@ describe("Given the NavMenu component", () => {
 
       expect(homeAltImage).toBeInTheDocument();
     });
+
+    test("Then it shoul show an image with 'Redirect to add new team page' alternative text", () => {
+      const addNewTeamAltImageText = /Redirect to add new team page/i;
+
+      render(
+        <MemoryRouter>
+          <NavMenu />
+        </MemoryRouter>,
+      );
+
+      const addNewTeamAltImage = screen.getByAltText(addNewTeamAltImageText);
+
+      expect(addNewTeamAltImage).toBeInTheDocument();
+    });
   });
 });
