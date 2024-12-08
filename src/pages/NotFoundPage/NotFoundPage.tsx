@@ -1,4 +1,4 @@
-import RedirectionButton from "../../components/RedirectionButton/RedirectionButton";
+import RedirectionButton from "../../components/Buttons/RedirectionButton/RedirectionButton";
 import "./NotFoundPage.css";
 
 const NotFoundPage: React.FC = () => {
@@ -13,8 +13,8 @@ const NotFoundPage: React.FC = () => {
         <RedirectionButton
           text="Go Back Home"
           redirection="/home"
-          className="button"
           ariaLabel="Redirect to home page"
+          buttonColor={"red"}
         />
       </div>
     </>

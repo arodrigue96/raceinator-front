@@ -35,6 +35,14 @@ a {
   color: unset;
 }
 
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font: inherit;
+  padding: 0;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
