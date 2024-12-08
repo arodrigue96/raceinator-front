@@ -1,15 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import Button from "./Button";
+import RedirectionButton from "./RedirectionButton";
 
-describe("Given the Button component", () => {
+describe("Given the RedirectionButton component", () => {
   describe("When it's rendered and receives 'Test' text", () => {
     test("Then it should show a 'Test' link", () => {
       const buttonText = /Test/i;
 
       render(
         <MemoryRouter>
-          <Button text={"Test"} redirection={""} />
+          <RedirectionButton text={"Test"} redirection={""} />
         </MemoryRouter>,
       );
 
