@@ -12,12 +12,31 @@ const NavMenu: React.FC = () => {
             return (
               <>
                 <img
-                  src={isActive ? "icons/home_black.svg" : "/icons/home.svg"}
+                  src={isActive ? "icons/home_black.svg" : "icons/home.svg"}
                   alt="Redirect to home page"
                   width={30}
                   height={30}
                 />
                 <span className="main-navigation__text">Home</span>
+              </>
+            );
+          }}
+        />
+        <NavLink
+          to="/new-team"
+          className="main-navigation__item"
+          children={({ isActive }) => {
+            return (
+              <>
+                <img
+                  src={
+                    isActive ? "icons/add-team_black.svg" : "icons/add-team.svg"
+                  }
+                  alt="Redirect to add new team page"
+                  width={30}
+                  height={30}
+                />
+                <span className="main-navigation__text">Add New Team</span>
               </>
             );
           }}
