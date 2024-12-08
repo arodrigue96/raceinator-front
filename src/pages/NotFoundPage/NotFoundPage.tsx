@@ -1,4 +1,4 @@
-import Button from "../../components/Button/Button";
+import RedirectionButton from "../../components/RedirectionButton/RedirectionButton";
 import "./NotFoundPage.css";
 
 const NotFoundPage: React.FC = () => {
@@ -10,7 +10,12 @@ const NotFoundPage: React.FC = () => {
           This page doesn't exist. Not to worry, it happens to even the best
           riders & teams.
         </p>
-        <Button text="Go Back Home" redirection="/home" className="button" />
+        <RedirectionButton
+          text="Go Back Home"
+          redirection="/home"
+          className="button"
+          ariaLabel="Redirect to home page"
+        />
       </div>
     </>
   );
