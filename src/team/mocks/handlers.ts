@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
-import { Team } from "../team/types";
 import teamsMock from "./teamsMock";
+import { Team } from "../types";
 
 const url = import.meta.env.VITE_API_URL;
 

@@ -1,4 +1,4 @@
-import { Team } from "../team/types";
+import { Team } from "../types";
 
 export const teamMock1: Team = {
   _id: "36b8f84d-df4e-4d49-b662-bcde71a8764f",
