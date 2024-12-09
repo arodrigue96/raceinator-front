@@ -1,6 +1,12 @@
 import { Team } from "../types";
 import { TeamsClientStructure } from "./types";
 
+export const url = import.meta.env.VITE_API_URL;
+
+if (!url) {
+  throw new Error("Enviroment variable VITE_API_URL does not exist");
+}
+
 class TeamsClient implements TeamsClientStructure {
   private readonly url = import.meta.env.VITE_API_URL;
 
