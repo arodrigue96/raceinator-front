@@ -20,8 +20,8 @@ describe("Given the NotFoundPage component", () => {
       expect(notFoundPageTitle).toBeInTheDocument();
     });
 
-    test("Then it should show 'Redirect to home page' link", () => {
-      const homeLinkText = /Redirect to home page/i;
+    test("Then it should show 'Go to home page' link", () => {
+      const homeLinkText = /Go to home page/i;
 
       render(
         <MemoryRouter>
