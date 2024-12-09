@@ -15,6 +15,7 @@ const Button: React.FC<ButtonProps> = ({
   ariaLabel,
   color,
   isDisabled,
+  type,
 }) => {
   const redColor = "#C80502";
   const greyColor = "#424242";
@@ -27,6 +28,7 @@ const Button: React.FC<ButtonProps> = ({
         backgroundColor: color === "grey" ? greyColor : redColor,
       }}
       disabled={isDisabled}
+      type={type ?? "button"}
     >
       {text}
     </button>
