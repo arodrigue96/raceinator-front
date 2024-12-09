@@ -1,4 +1,4 @@
-import teamsMock from "../../../mocks/teamsMock";
+import teamsMock from "../../mocks/teamsMock";
 import TeamsClient from "../TeamsClient";
 
 describe("Given the getTeams method of the TeamsClient class", () => {

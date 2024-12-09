@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import TeamsList from "./TeamsList";
-import teamsMock from "../../../mocks/teamsMock";
+import teamsMock from "../../mocks/teamsMock";
 
 describe("Given the TeamsList component", () => {
   describe("When it receives a list of teams with 'Aniol's team' and 'Mario's team'", () => {
