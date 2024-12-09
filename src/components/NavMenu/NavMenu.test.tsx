@@ -4,8 +4,8 @@ import NavMenu from "./NavMenu";
 
 describe("Given the NavMenu component", () => {
   describe("When it's rendered", () => {
-    test("Then it should show an image with 'Redirect to home page' alternative text", () => {
-      const homeAltImageText = /redirect to home page/i;
+    test("Then it should show an image with 'Go to home page' alternative text", () => {
+      const homeAltImageText = /Go to home page/i;
 
       render(
         <MemoryRouter>
@@ -18,8 +18,8 @@ describe("Given the NavMenu component", () => {
       expect(homeAltImage).toBeInTheDocument();
     });
 
-    test("Then it shoul show an image with 'Redirect to add new team page' alternative text", () => {
-      const addNewTeamAltImageText = /Redirect to add new team page/i;
+    test("Then it shoul show an image with 'Go to add new team page' alternative text", () => {
+      const addNewTeamAltImageText = /Go to add new team page/i;
 
       render(
         <MemoryRouter>

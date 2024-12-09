@@ -12,7 +12,6 @@ describe("Given the RedirectionButton component", () => {
           <RedirectionButton
             text={"Test"}
             redirection={""}
-            ariaLabel=""
             buttonColor="grey"
           />
         </MemoryRouter>,

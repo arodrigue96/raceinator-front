@@ -5,7 +5,6 @@ interface RedirectionButtonProps {
   text: string;
   className?: string;
   redirection: string;
-  ariaLabel: string;
   buttonColor: "red" | "grey";
 }
 
@@ -13,7 +12,6 @@ const RedirectionButton: React.FC<RedirectionButtonProps> = ({
   text,
   className,
   redirection,
-  ariaLabel,
   buttonColor,
 }) => {
   const greyColor = "#424242";
@@ -23,7 +21,6 @@ const RedirectionButton: React.FC<RedirectionButtonProps> = ({
     <Link
       className={className ? `main-button ${className}` : "main-button"}
       to={redirection}
-      aria-label={ariaLabel}
       style={{
         backgroundColor: buttonColor === "grey" ? greyColor : redColor,
       }}

@@ -1,9 +1,9 @@
 import { Team } from "../types";
 import { TeamsClientStructure } from "./types";
 
-export const url = import.meta.env.VITE_API_URL;
+export const apiRestUrl = import.meta.env.VITE_API_URL;
 
-if (!url) {
+if (!apiRestUrl) {
   throw new Error("Enviroment variable VITE_API_URL does not exist");
 }
 

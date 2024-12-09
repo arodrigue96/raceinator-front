@@ -13,7 +13,6 @@ const NotFoundPage: React.FC = () => {
         <RedirectionButton
           text="Go Back Home"
           redirection="/home"
-          ariaLabel="Redirect to home page"
           buttonColor={"red"}
         />
       </div>
