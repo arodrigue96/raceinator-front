@@ -6,13 +6,11 @@ interface ButtonProps {
   className?: string;
   type?: "submit" | "reset";
   isDisabled?: boolean;
-  ariaLabel: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
   text,
   className,
-  ariaLabel,
   color,
   isDisabled,
   type,
@@ -23,7 +21,6 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={className ? `main-button ${className}` : "main-button"}
-      aria-label={ariaLabel}
       style={{
         backgroundColor: color === "grey" ? greyColor : redColor,
       }}

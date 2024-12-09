@@ -6,7 +6,7 @@ describe("Given the Button component", () => {
     test("Then it should show a 'Aniol' inside a button", () => {
       const buttonText = /Aniol/i;
 
-      render(<Button text={"Aniol"} color={"red"} ariaLabel={""} />);
+      render(<Button text={"Aniol"} color={"red"} />);
 
       const button = screen.getByRole("button", {
         name: buttonText,

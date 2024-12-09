@@ -80,7 +80,6 @@ const TeamForm: React.FC = () => {
       <Button
         text={"Create team"}
         color={"grey"}
-        ariaLabel={"Create team"}
         className="button__form"
         type="submit"
       />
