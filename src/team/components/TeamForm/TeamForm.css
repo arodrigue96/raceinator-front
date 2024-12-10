@@ -10,6 +10,18 @@
   gap: 8px;
 }
 
+.team-form__riders-name {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.team-form__official-team {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .team-form__input {
   background-color: #f7f7f7;
   border-radius: 8px;
