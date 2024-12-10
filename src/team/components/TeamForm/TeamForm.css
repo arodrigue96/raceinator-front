@@ -18,7 +18,7 @@
 }
 
 .team-form__input:focus {
-  border: 2px solid #c80502;
+  border: 2px solid var(--button-main-color);
   outline: none;
 }
 
@@ -47,4 +47,5 @@
 
 .button__form {
   width: 120px;
+  background-color: var(--button-secondary-main-color);
 }

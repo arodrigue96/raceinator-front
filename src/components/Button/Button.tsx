@@ -1,8 +1,9 @@
-import "../Buttons.css";
+import { Link } from "react-router";
+import "./Button.css";
 
 interface ButtonProps {
   text: string;
-  color: "red" | "grey";
+  linkTo?: string;
   className?: string;
   type?: "submit" | "reset";
   isDisabled?: boolean;
@@ -11,19 +12,20 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   text,
   className,
-  color,
   isDisabled,
   type,
+  linkTo,
 }) => {
-  const redColor = "#C80502";
-  const greyColor = "#424242";
-
-  return (
+  return linkTo ? (
+    <Link
+      className={className ? `main-button ${className}` : "main-button"}
+      to={linkTo}
+    >
+      {text}
+    </Link>
+  ) : (
     <button
       className={className ? `main-button ${className}` : "main-button"}
-      style={{
-        backgroundColor: color === "grey" ? greyColor : redColor,
-      }}
       disabled={isDisabled}
       type={type ?? "button"}
     >

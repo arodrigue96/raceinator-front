@@ -1,4 +1,4 @@
-import Button from "../../../components/Buttons/Button/Button";
+import Button from "../../../components/Button/Button";
 import "./TeamForm.css";
 
 const TeamForm: React.FC = () => {
@@ -77,12 +77,7 @@ const TeamForm: React.FC = () => {
           required
         ></textarea>
       </div>
-      <Button
-        text={"Create team"}
-        color={"grey"}
-        className="button__form"
-        type="submit"
-      />
+      <Button text={"Create team"} className="button__form" type="submit" />
     </form>
   );
 };
