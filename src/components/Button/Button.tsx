@@ -16,16 +16,17 @@ const Button: React.FC<ButtonProps> = ({
   type,
   linkTo,
 }) => {
+  const buttonClassName = className
+    ? `main-button ${className}`
+    : "main-button";
+
   return linkTo ? (
-    <Link
-      className={className ? `main-button ${className}` : "main-button"}
-      to={linkTo}
-    >
+    <Link className={buttonClassName} to={linkTo}>
       {text}
     </Link>
   ) : (
     <button
-      className={className ? `main-button ${className}` : "main-button"}
+      className={buttonClassName}
       disabled={isDisabled}
       type={type ?? "button"}
     >
