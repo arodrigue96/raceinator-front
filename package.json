@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:dev": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "prepare": "husky"
   },
   "dependencies": {
     "@fontsource/ubuntu": "^5.1.0",
