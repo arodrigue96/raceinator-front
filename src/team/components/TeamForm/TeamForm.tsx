@@ -9,17 +9,27 @@ const TeamForm: React.FC = () => {
         <input className="team-form__input" type="text" id="name" required />
       </div>
       <div className="team-form__info">
-        <label htmlFor="ridersNames">Riders names</label>
-        <input
-          className="team-form__input"
-          type="text"
-          id="ridersNames"
-          required
-        />
-        <span className="team-form__details">
-          Please provide two names, separated by a comma (e.g., Marc Marquez,
-          Francesco Bagnaia).
-        </span>
+        <span>Riders Names:</span>
+        <div className="team-form__riders-name">
+          <div className="team-form__info">
+            <label htmlFor="riderName1">Rider name 1</label>
+            <input
+              className="team-form__input"
+              type="text"
+              id="riderName1"
+              required
+            />
+          </div>
+          <div className="team-form__info">
+            <label htmlFor="riderName2">Rider name 2</label>
+            <input
+              className="team-form__input"
+              type="text"
+              id="riderName2"
+              required
+            />
+          </div>
+        </div>
       </div>
       <div className="team-form__info">
         <label htmlFor="debutYear">Debut year in MotoGP</label>
@@ -32,17 +42,13 @@ const TeamForm: React.FC = () => {
           required
         />
       </div>
-      <div className="team-form__info">
+      <div className="team-form__info team-form__official-team">
         <label htmlFor="isOfficialTeam">Is it a Official Team?</label>
-        <div className="team-form__official-team">
-          <input
-            className="team-form__input team-form__checkbox"
-            type="checkbox"
-            id="isOfficialTeam"
-            required
-          />
-          <span>Yes / No</span>
-        </div>
+        <input
+          className="team-form__input team-form__checkbox"
+          type="checkbox"
+          id="isOfficialTeam"
+        />
       </div>
       <div className="team-form__info">
         <label htmlFor="championshipTitles">

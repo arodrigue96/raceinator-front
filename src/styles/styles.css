@@ -45,6 +45,20 @@ ul {
   margin: 0;
 }
 
+input {
+  font: inherit;
+  padding: 0;
+  border: 0;
+  color: inherit;
+}
+
+textarea {
+  font: inherit;
+  padding: 0;
+  border: 0;
+  color: inherit;
+}
+
 .root {
   display: flex;
   flex-direction: column;
