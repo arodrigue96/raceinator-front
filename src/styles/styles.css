@@ -1,3 +1,8 @@
+:root {
+  --button-main-color: #c80502;
+  --button-secondary-main-color: #424242;
+}
+
 *,
 ::after,
 ::before {
