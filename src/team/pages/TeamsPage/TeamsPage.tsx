@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import TeamsClient from "../../client/TeamsClient";
 import { Team } from "../../types";
 import TeamsList from "../../components/TeamsList/TeamsList";
@@ -29,6 +30,18 @@ const TeamsPage: React.FC = () => {
 
   return (
     <>
+      {teams.length > 0 && (
+        <HelmetProvider>
+          <Helmet>
+            <link
+              rel="preload"
+              as="image"
+              href={teams[0].imageUrl}
+              fetchPriority="high"
+            />
+          </Helmet>
+        </HelmetProvider>
+      )}
       <h1 className="page-title">Teams</h1>
       {isLoading && <Loader />}
       <TeamsList teams={teams} />
