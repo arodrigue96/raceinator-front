@@ -1,12 +1,18 @@
 import { render, screen } from "@testing-library/react";
 import TeamsPage from "./TeamsPage";
+import { Provider } from "react-redux";
+import { store } from "../../store";
 
 describe("Given the TeamsPage component", () => {
   describe("When it's rendered", () => {
     test("Then it should show a spinner with 'Loading' text", () => {
       const expectedLoaderText = /Loading Spinner/i;
 
-      render(<TeamsPage />);
+      render(
+        <Provider store={store}>
+          <TeamsPage />
+        </Provider>,
+      );
 
       const loader = screen.getByLabelText(expectedLoaderText);
 
@@ -16,7 +22,11 @@ describe("Given the TeamsPage component", () => {
     test("Then it should show 'Teams' inside a heading", () => {
       const titleText = /teams/i;
 
-      render(<TeamsPage />);
+      render(
+        <Provider store={store}>
+          <TeamsPage />
+        </Provider>,
+      );
 
       const pageTitle = screen.getByRole("heading", {
         name: titleText,
@@ -29,7 +39,11 @@ describe("Given the TeamsPage component", () => {
       const expectedTeam1AltText = /The motorbikes of Aniol's team/i;
       const expectedTeam2AltText = /The motorbikes of Mario's team/i;
 
-      render(<TeamsPage />);
+      render(
+        <Provider store={store}>
+          <TeamsPage />
+        </Provider>,
+      );
 
       const team1AlternativeText =
         await screen.findByAltText(expectedTeam1AltText);
@@ -44,7 +58,11 @@ describe("Given the TeamsPage component", () => {
       const expectedTeamNameText1 = /Aniol's team/i;
       const expectedTeamNameText2 = /Mario's team/i;
 
-      render(<TeamsPage />);
+      render(
+        <Provider store={store}>
+          <TeamsPage />
+        </Provider>,
+      );
 
       const teamName1 = await screen.findByRole("heading", {
         name: expectedTeamNameText1,

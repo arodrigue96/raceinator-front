@@ -1,6 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router";
+import { Provider } from "react-redux";
+import { store } from "./team/store";
 import AppRouter from "./router/AppRouter";
 import "@fontsource/ubuntu/700.css";
 import "@fontsource/ubuntu/400.css";
@@ -17,7 +19,9 @@ if (!root) {
 createRoot(root).render(
   <StrictMode>
     <BrowserRouter>
-      <AppRouter />
+      <Provider store={store}>
+        <AppRouter />
+      </Provider>
     </BrowserRouter>
   </StrictMode>,
 );
