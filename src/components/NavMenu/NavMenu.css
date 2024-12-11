@@ -1,16 +1,17 @@
 .nav-container {
-  margin-top: 20px;
   bottom: 0;
-  position: sticky;
+  position: fixed;
   width: 100%;
 }
 
 .main-navigation {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   background-color: #f7f7f7;
   padding: 30px 53px;
+  max-width: var(--container-max-width);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .main-navigation__item {

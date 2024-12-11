@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import "./LoadingTeamError.css";
+import "./loadingTeamError.css";
 
 const loadingTeamError = () => {
   toast.error(`Failed to Load teams`, {
