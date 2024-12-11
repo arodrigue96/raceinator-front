@@ -9,9 +9,9 @@ interface TeamsListProps {
 const TeamsList: React.FC<TeamsListProps> = ({ teams }) => {
   return (
     <ul className="teams-list">
-      {teams.map((team) => (
+      {teams.map((team, position) => (
         <li key={team._id}>
-          <TeamCard team={team} />
+          <TeamCard team={team} loading={position === 0 ? "eager" : "lazy"} />
         </li>
       ))}
     </ul>

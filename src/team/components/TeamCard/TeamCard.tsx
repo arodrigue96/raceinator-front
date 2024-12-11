@@ -3,9 +3,10 @@ import "./TeamCard.css";
 
 interface TeamCardProps {
   team: Team;
+  loading?: "lazy" | "eager";
 }
 
-const TeamCard: React.FC<TeamCardProps> = ({ team }) => {
+const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
   const { imageUrl, altImageText, name, ridersNames } = team;
 
   return (
@@ -16,6 +17,7 @@ const TeamCard: React.FC<TeamCardProps> = ({ team }) => {
         alt={altImageText}
         width={447}
         height={327}
+        loading={loading}
       />
       <div className="team-card__information">
         <h2 className="team-card__name">{name}</h2>
