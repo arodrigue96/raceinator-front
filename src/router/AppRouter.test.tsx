@@ -1,6 +1,8 @@
 import { MemoryRouter } from "react-router";
 import { render, screen } from "@testing-library/react";
 import AppRouter from "./AppRouter";
+import { Provider } from "react-redux";
+import { store } from "../team/store";
 
 describe("Given the AppRouter component", () => {
   describe("When it is rendered at '/home'", () => {
@@ -10,9 +12,12 @@ describe("Given the AppRouter component", () => {
 
       render(
         <MemoryRouter initialEntries={[teamsPage]}>
-          <AppRouter />
+          <Provider store={store}>
+            <AppRouter />
+          </Provider>
         </MemoryRouter>,
       );
+
       const pageTitle = await screen.findByRole("heading", {
         name: pageTitleText,
       });
@@ -20,6 +25,7 @@ describe("Given the AppRouter component", () => {
       expect(pageTitle).toBeInTheDocument();
     });
   });
+
   describe("When it is rendered at '/home1'", () => {
     test("Then it should show 'Page not found' inside a heading", async () => {
       const badRoute = "/home1";
@@ -27,9 +33,12 @@ describe("Given the AppRouter component", () => {
 
       render(
         <MemoryRouter initialEntries={[badRoute]}>
-          <AppRouter />
+          <Provider store={store}>
+            <AppRouter />
+          </Provider>
         </MemoryRouter>,
       );
+
       const pageTitle = await screen.findByRole("heading", {
         name: pageTitleText,
       });
@@ -45,9 +54,12 @@ describe("Given the AppRouter component", () => {
 
       render(
         <MemoryRouter initialEntries={[addNewTeamPage]}>
-          <AppRouter />
+          <Provider store={store}>
+            <AppRouter />
+          </Provider>
         </MemoryRouter>,
       );
+
       const pageTitle = await screen.findByRole("heading", {
         name: pageTitleText,
       });
