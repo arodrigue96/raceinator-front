@@ -4,8 +4,8 @@ import NavMenu from "./NavMenu";
 
 describe("Given the NavMenu component", () => {
   describe("When it's rendered", () => {
-    test("Then it should show an image with 'Go to home page' alternative text", () => {
-      const homeAltImageText = /Go to home page/i;
+    test("Then it should show a 'Home' link", () => {
+      const homeLinkText = /Home/i;
 
       render(
         <MemoryRouter>
@@ -13,13 +13,15 @@ describe("Given the NavMenu component", () => {
         </MemoryRouter>,
       );
 
-      const homeAltImage = screen.getByAltText(homeAltImageText);
+      const homeLink = screen.getByRole("link", {
+        name: homeLinkText,
+      });
 
-      expect(homeAltImage).toBeInTheDocument();
+      expect(homeLink).toBeInTheDocument();
     });
 
-    test("Then it shoul show an image with 'Go to add new team page' alternative text", () => {
-      const addNewTeamAltImageText = /Go to add new team page/i;
+    test("Then it should show a 'Add new team' link", () => {
+      const addNewTeamLinkText = /Add new team/i;
 
       render(
         <MemoryRouter>
@@ -27,9 +29,11 @@ describe("Given the NavMenu component", () => {
         </MemoryRouter>,
       );
 
-      const addNewTeamAltImage = screen.getByAltText(addNewTeamAltImageText);
+      const addNewTeamLink = screen.getByRole("link", {
+        name: addNewTeamLinkText,
+      });
 
-      expect(addNewTeamAltImage).toBeInTheDocument();
+      expect(addNewTeamLink).toBeInTheDocument();
     });
   });
 });
