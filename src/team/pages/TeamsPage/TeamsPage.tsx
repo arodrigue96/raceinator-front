@@ -1,7 +1,7 @@
+import { useEffect } from "react";
 import TeamsList from "../../components/TeamsList/TeamsList";
 import Loader from "../../../components/Loader/Loader";
 import useTeams from "../../hooks/useTeams";
-import { useEffect } from "react";
 
 const TeamsPage: React.FC = () => {
   const { teams, isLoading, fetchTeams } = useTeams();
