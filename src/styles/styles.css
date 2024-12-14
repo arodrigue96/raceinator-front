@@ -40,6 +40,11 @@ button {
   padding: 0;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  background-color: #808080;
+}
+
 ul {
   list-style-type: none;
   padding: 0;

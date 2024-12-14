@@ -60,6 +60,7 @@
 .team-form__description {
   line-height: 1.5;
   min-height: 80px;
+  field-sizing: content;
 }
 
 .button__form {
