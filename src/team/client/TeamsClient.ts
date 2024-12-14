@@ -1,4 +1,4 @@
-import { Team } from "../types";
+import { Team, TeamWithoutId } from "../types";
 import { TeamsClientStructure } from "./types";
 
 export const apiRestUrl = import.meta.env.VITE_API_URL;
@@ -18,6 +18,28 @@ class TeamsClient implements TeamsClientStructure {
     }
 
     const { teams } = (await response.json()) as { teams: Team[] };
+
+    return teams;
+  }
+
+  async createTeam(teamData: TeamWithoutId): Promise<Team> {
+    const response = await fetch(`${this.apiRestUrl}/teams`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(teamData),
+    });
+
+    if (response.status === 409) {
+      throw new Error(`A team with ${teamData.name} name already exists`);
+    }
+
+    if (!response.ok) {
+      throw new Error("Failed to add a new team");
+    }
+
+    const { teams } = (await response.json()) as { teams: Team };
 
     return teams;
   }
