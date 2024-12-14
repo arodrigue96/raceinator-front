@@ -32,7 +32,7 @@ describe("Given the TeamForm component", () => {
       expect(descriptionField).toBeInTheDocument();
     });
 
-    test("Then it should show a 'Create Team' button", () => {
+    test("Then it should show a disabled 'Create Team' button", () => {
       const buttonText = /create team/i;
 
       render(<TeamForm />);
@@ -42,6 +42,7 @@ describe("Given the TeamForm component", () => {
       });
 
       expect(createTeamButton).toBeInTheDocument();
+      expect(createTeamButton).toBeDisabled();
     });
   });
 
