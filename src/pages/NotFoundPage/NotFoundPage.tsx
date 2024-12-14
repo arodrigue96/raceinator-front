@@ -10,7 +10,7 @@ const NotFoundPage: React.FC = () => {
           This page doesn't exist. Not to worry, it happens to even the best
           riders & teams.
         </p>
-        <Button text="Go Back Home" linkTo="/home" />
+        <Button children="Go Back Home" linkTo="/home" />
       </div>
     </>
   );

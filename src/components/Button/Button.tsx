@@ -1,20 +1,17 @@
 import { Link } from "react-router";
+import { ButtonHTMLAttributes, PropsWithChildren } from "react";
 import "./Button.css";
 
-interface ButtonProps {
-  text: string;
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: string;
   linkTo?: string;
-  className?: string;
-  type?: "submit" | "reset";
-  isDisabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({
-  text,
+const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
+  children,
   className,
-  isDisabled,
-  type,
   linkTo,
+  ...props
 }) => {
   const buttonClassName = className
     ? `main-button ${className}`
@@ -22,15 +19,11 @@ const Button: React.FC<ButtonProps> = ({
 
   return linkTo ? (
     <Link className={buttonClassName} to={linkTo}>
-      {text}
+      {children}
     </Link>
   ) : (
-    <button
-      className={buttonClassName}
-      disabled={isDisabled}
-      type={type ?? "button"}
-    >
-      {text}
+    <button className={buttonClassName} {...props}>
+      {children}
     </button>
   );
 };

@@ -42,10 +42,19 @@
 
 .team-form__checkbox {
   width: 24px;
-  height: 24px;
+  aspect-ratio: 1;
   margin: 0;
   background-color: #fff;
   cursor: pointer;
+  border-radius: 8px;
+  padding: 0;
+}
+
+.team-form__checkbox:checked::after {
+  display: flex;
+  justify-content: center;
+  content: "✔";
+  color: #424242;
 }
 
 .team-form__description {
