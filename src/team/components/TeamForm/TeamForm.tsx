@@ -83,7 +83,12 @@ const TeamForm: React.FC = () => {
           required
         ></textarea>
       </div>
-      <Button text={"Create team"} className="button__form" type="submit" />
+      <Button
+        children="Create team"
+        className="button__form"
+        type="submit"
+        disabled
+      />
     </form>
   );
 };

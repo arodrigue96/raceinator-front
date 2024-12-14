@@ -7,7 +7,7 @@ describe("Given the Button component", () => {
     test("Then it should show a 'Aniol' inside a button", () => {
       const buttonText = /Aniol/i;
 
-      render(<Button text={"Aniol"} />);
+      render(<Button children={"Aniol"} />);
 
       const button = screen.getByRole("button", {
         name: buttonText,
@@ -23,7 +23,7 @@ describe("Given the Button component", () => {
 
       render(
         <MemoryRouter>
-          <Button text="Test" linkTo="/home" />
+          <Button children="Test" linkTo="/home" />
         </MemoryRouter>,
       );
 
