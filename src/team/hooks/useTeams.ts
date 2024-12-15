@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import TeamsClient from "../client/TeamsClient";
 import { loadTeams } from "../slice";
-import loadingTeamError from "../toasts/loadingTeamError/loadingTeamError";
+import { loadingTeamError } from "../toasts/errors/errors";
 
 const useTeams = () => {
   const [isLoading, setIsLoading] = useState(false);
