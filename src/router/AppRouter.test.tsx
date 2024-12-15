@@ -1,6 +1,6 @@
 import { MemoryRouter } from "react-router";
 import { render, screen } from "@testing-library/react";
-import { http } from "msw";
+import { http, HttpResponse } from "msw";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { store } from "../team/store";
@@ -11,6 +11,37 @@ import AppRouter from "./AppRouter";
 
 describe("Given the AppRouter component", () => {
   const user = userEvent.setup();
+
+  const submitForm = async () => {
+    const nameField = screen.getByLabelText("Name");
+    const riderName1Field = screen.getByLabelText(/rider name 1/i);
+    const riderName2Field = screen.getByLabelText(/rider name 2/i);
+    const debutYearField = screen.getByLabelText(/debut year in motogp/i);
+    const isOfficialTeamField = screen.getByLabelText(
+      /is it a official team?/i,
+    );
+    const championshipTitlesField = screen.getByLabelText(
+      /number of championship titles/i,
+    );
+    const imageUrlField = screen.getByLabelText(/image url/i);
+    const altTextField = screen.getByLabelText(/alternative text/i);
+    const descriptionField = screen.getByLabelText(/description/i);
+
+    const createTeamButton = screen.getByRole("button", {
+      name: /create team/i,
+    });
+
+    await user.type(nameField, "Aniol's team");
+    await user.type(riderName1Field, "Aniol Rodriguez");
+    await user.type(riderName2Field, "Erik Riquelme");
+    await user.type(debutYearField, "1996");
+    await user.click(isOfficialTeamField);
+    await user.type(championshipTitlesField, "0");
+    await user.type(imageUrlField, "https://google.com");
+    await user.type(altTextField, "Aniol's team");
+    await user.type(descriptionField, "Aniol will have a team one day");
+    await user.click(createTeamButton);
+  };
 
   describe("When it is rendered at '/home'", () => {
     test("Then it should show 'Teams' inside a heading", async () => {
@@ -146,6 +177,61 @@ describe("Given the AppRouter component", () => {
       });
 
       expect(pageTitle).toBeInTheDocument();
+    });
+
+    describe("And the user submit the form with the team name 'Aniol's team' and this team already exists", () => {
+      test("Then it should show a toast with the message: 'A team with Aniol's name already exists'", async () => {
+        server.use(
+          http.post(`${apiRestUrl}/teams`, () => {
+            return HttpResponse.json(
+              {
+                message: "A team with this name already exists",
+              },
+              { status: 409 },
+            );
+          }),
+        );
+        const toastText = "A team with Aniol's team name already exists";
+
+        render(
+          <MemoryRouter initialEntries={[addNewTeamPage]}>
+            <Provider store={store}>
+              <AppRouter />
+            </Provider>
+          </MemoryRouter>,
+        );
+
+        submitForm();
+
+        const toast = await screen.findByText(toastText);
+
+        expect(toast).toBeInTheDocument();
+      });
+    });
+
+    describe("And the user submit the form with the team name 'Aniol's team' and there is a network error", () => {
+      test("Then it should show a toast with the message: 'Failed to add a new team'", async () => {
+        server.use(
+          http.post(`${apiRestUrl}/teams`, () => {
+            return HttpResponse.error();
+          }),
+        );
+        const toastText = "Failed to add a new team";
+
+        render(
+          <MemoryRouter initialEntries={[addNewTeamPage]}>
+            <Provider store={store}>
+              <AppRouter />
+            </Provider>
+          </MemoryRouter>,
+        );
+
+        submitForm();
+
+        const toast = await screen.findByText(toastText);
+
+        expect(toast).toBeInTheDocument();
+      });
     });
 
     describe("And when the user clicks 'Home' link'", () => {
