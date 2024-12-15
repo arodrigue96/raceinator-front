@@ -8,6 +8,8 @@ import { server } from "../mocks/node";
 import { apiRestUrl } from "../team/client/TeamsClient";
 import { addNewTeamPage, notFoundPage, teamsPage } from "./routes";
 import AppRouter from "./AppRouter";
+import { teamMock1 } from "../team/mocks/teamsMock";
+import { Team } from "../team/types";
 
 describe("Given the AppRouter component", () => {
   const user = userEvent.setup();
@@ -234,10 +236,17 @@ describe("Given the AppRouter component", () => {
       });
     });
 
-    describe("And when the user clicks 'Home' link'", () => {
-      test("Then it should show 'Teams' inside a heading", async () => {
-        const linkText = /Home/i;
-        const pageTitleText = /Teams/i;
+    describe("And the user submit the form with the team name 'Aniol's team'", () => {
+      test("Then it should show a toast with the message: 'Team created'", async () => {
+        const expectedToastMessage = /Team created/i;
+
+        server.use(
+          http.post(`${apiRestUrl}/teams`, () => {
+            return HttpResponse.json<{ teams: Team }>({
+              teams: teamMock1,
+            });
+          }),
+        );
 
         render(
           <MemoryRouter initialEntries={[addNewTeamPage]}>
@@ -247,18 +256,67 @@ describe("Given the AppRouter component", () => {
           </MemoryRouter>,
         );
 
-        const homeLink = await screen.findByRole("link", {
-          name: linkText,
-        });
+        submitForm();
 
-        await user.click(homeLink);
+        const toast = await screen.findByText(expectedToastMessage);
+
+        expect(toast).toBeInTheDocument();
+      });
+
+      test("Then it should navigate to '/home'", async () => {
+        const expectedPageTitle = /Teams/i;
+
+        server.use(
+          http.post(`${apiRestUrl}/teams`, () => {
+            return HttpResponse.json<{ teams: Team }>({
+              teams: teamMock1,
+            });
+          }),
+        );
+
+        render(
+          <MemoryRouter initialEntries={[addNewTeamPage]}>
+            <Provider store={store}>
+              <AppRouter />
+            </Provider>
+          </MemoryRouter>,
+        );
+
+        submitForm();
 
         const pageTitle = await screen.findByRole("heading", {
-          name: pageTitleText,
+          name: expectedPageTitle,
         });
 
         expect(pageTitle).toBeInTheDocument();
       });
+    });
+  });
+
+  describe("And when the user clicks 'Home' link'", () => {
+    test("Then it should show 'Teams' inside a heading", async () => {
+      const linkText = /Home/i;
+      const pageTitleText = /Teams/i;
+
+      render(
+        <MemoryRouter initialEntries={[addNewTeamPage]}>
+          <Provider store={store}>
+            <AppRouter />
+          </Provider>
+        </MemoryRouter>,
+      );
+
+      const homeLink = await screen.findByRole("link", {
+        name: linkText,
+      });
+
+      await user.click(homeLink);
+
+      const pageTitle = await screen.findByRole("heading", {
+        name: pageTitleText,
+      });
+
+      expect(pageTitle).toBeInTheDocument();
     });
   });
 });

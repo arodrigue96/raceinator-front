@@ -1,12 +1,17 @@
 import { render, screen } from "@testing-library/react";
 import AddNewTeamPage from "./AddNewTeamPage";
+import { MemoryRouter } from "react-router";
 
 describe("Given the AddNewTeamPage component", () => {
   describe("When it's rendered", () => {
     test("Then it should show 'Add new team' inside a heading", () => {
       const expectedPageTitleText = /Add new team/i;
 
-      render(<AddNewTeamPage />);
+      render(
+        <MemoryRouter>
+          <AddNewTeamPage />
+        </MemoryRouter>,
+      );
 
       const pageTitle = screen.getByRole("heading", {
         name: expectedPageTitleText,
@@ -16,8 +21,11 @@ describe("Given the AddNewTeamPage component", () => {
     });
 
     test("Then it should show 'Name', 'Rider name 1', 'Rider name 2', 'Debut year in MotoGP', 'Is it a Official Team', 'Number of Championship titles', 'Image URL', 'Alternative Text' and 'Description' fields", () => {
-      render(<AddNewTeamPage />);
-
+      render(
+        <MemoryRouter>
+          <AddNewTeamPage />
+        </MemoryRouter>,
+      );
       const nameField = screen.getByLabelText("Name");
       const riderName1Field = screen.getByLabelText(/rider name 1/i);
       const riderName2Field = screen.getByLabelText(/rider name 2/i);
@@ -46,8 +54,11 @@ describe("Given the AddNewTeamPage component", () => {
     test("Then it should show a disabled 'Create Team' button", () => {
       const buttonText = /create team/i;
 
-      render(<AddNewTeamPage />);
-
+      render(
+        <MemoryRouter>
+          <AddNewTeamPage />
+        </MemoryRouter>,
+      );
       const createTeamButton = screen.getByRole("button", {
         name: buttonText,
       });
