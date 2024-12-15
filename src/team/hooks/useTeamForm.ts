@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { TeamFormData } from "../types";
+import { TeamFormData, TeamWithoutId } from "../types";
+import TeamsClient from "../client/TeamsClient";
 
 const useTeamForm = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -54,12 +55,47 @@ const useTeamForm = () => {
     setIsButtonDisabled(!isValid);
   };
 
+  const transformTeamFormData = (teamData: TeamFormData): TeamWithoutId => {
+    const {
+      riderName1,
+      riderName2,
+      altImageText,
+      championshipTitles,
+      debutYear,
+      description,
+      imageUrl,
+      isOfficialTeam,
+      name,
+    } = teamData;
+
+    return {
+      name: name,
+      ridersNames: [riderName1, riderName2],
+      debutYear: debutYear,
+      isOfficialTeam: isOfficialTeam,
+      championshipTitles: championshipTitles,
+      imageUrl: imageUrl,
+      altImageText: altImageText,
+      description: description,
+    };
+  };
+
+  const createTeam = (teamData: TeamWithoutId) => {
+    const teamsClient = new TeamsClient();
+
+    const newTeam = teamsClient.createTeam(teamData);
+
+    return newTeam;
+  };
+
   return {
     teamData,
     updateTeamData,
     handleCheckBoxState,
     isValidForm,
     isButtonDisabled,
+    transformTeamFormData,
+    createTeam,
   };
 };
 

@@ -1,15 +1,21 @@
 import { useEffect } from "react";
 import Button from "../../../components/Button/Button";
 import useTeamForm from "../../hooks/useTeamForm";
+import { TeamWithoutId } from "../../types";
 import "./TeamForm.css";
 
-const TeamForm: React.FC = () => {
+interface TeamFormProps {
+  submitTeamData: (teamData: TeamWithoutId) => void;
+}
+
+const TeamForm: React.FC<TeamFormProps> = ({ submitTeamData }) => {
   const {
     teamData,
     updateTeamData,
     handleCheckBoxState,
     isButtonDisabled,
     isValidForm,
+    transformTeamFormData,
   } = useTeamForm();
 
   const {
@@ -24,12 +30,20 @@ const TeamForm: React.FC = () => {
     description,
   } = teamData;
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const teamWithoutId = transformTeamFormData(teamData);
+
+    submitTeamData(teamWithoutId);
+  };
+
   useEffect(() => {
     isValidForm();
   }, [isValidForm]);
 
   return (
-    <form className="team-form">
+    <form className="team-form" onSubmit={handleSubmit}>
       <div className="team-form__info">
         <label htmlFor="name">Name</label>
         <input
