@@ -1,11 +1,16 @@
 import MoonLoader from "react-spinners/MoonLoader";
 import "./Loader.css";
 
-const Loader: React.FC = () => {
+interface LoaderProps {
+  message?: string;
+}
+
+const Loader: React.FC<LoaderProps> = ({ message }) => {
   return (
-    <span className="loader">
+    <div className="loader">
       <MoonLoader aria-label="Loading Spinner" speedMultiplier={0.6} />
-    </span>
+      {message && <span className="loader--message">{message}</span>}
+    </div>
   );
 };
 
