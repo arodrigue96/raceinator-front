@@ -1,9 +1,16 @@
+import { useEffect } from "react";
 import Button from "../../../components/Button/Button";
 import useTeamForm from "../../hooks/useTeamForm";
 import "./TeamForm.css";
 
 const TeamForm: React.FC = () => {
-  const { teamData, updateTeamData, handleCheckBoxState } = useTeamForm();
+  const {
+    teamData,
+    updateTeamData,
+    handleCheckBoxState,
+    isButtonDisabled,
+    isValidForm,
+  } = useTeamForm();
 
   const {
     name,
@@ -16,6 +23,10 @@ const TeamForm: React.FC = () => {
     altImageText,
     description,
   } = teamData;
+
+  useEffect(() => {
+    isValidForm();
+  }, [isValidForm]);
 
   return (
     <form className="team-form">
@@ -126,7 +137,12 @@ const TeamForm: React.FC = () => {
           required
         ></textarea>
       </div>
-      <Button children="Create team" className="button__form" type="submit" />
+      <Button
+        children="Create team"
+        className="button__form"
+        type="submit"
+        disabled={isButtonDisabled}
+      />
     </form>
   );
 };

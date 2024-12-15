@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TeamFormData } from "../types";
 
 const useTeamForm = () => {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [teamData, setTeamData] = useState<TeamFormData>({
     name: "",
     riderName1: "",
@@ -30,10 +31,35 @@ const useTeamForm = () => {
     }));
   };
 
+  const isValidForm = () => {
+    const {
+      name,
+      riderName1,
+      riderName2,
+      debutYear,
+      imageUrl,
+      altImageText,
+      description,
+    } = teamData;
+
+    const isValid =
+      name.length > 0 &&
+      riderName1.length > 0 &&
+      riderName2.length > 0 &&
+      debutYear > 0 &&
+      imageUrl.length > 0 &&
+      altImageText.length > 0 &&
+      description.length > 0;
+
+    setIsButtonDisabled(!isValid);
+  };
+
   return {
     teamData,
     updateTeamData,
     handleCheckBoxState,
+    isValidForm,
+    isButtonDisabled,
   };
 };
 
