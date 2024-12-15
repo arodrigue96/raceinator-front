@@ -1,13 +1,16 @@
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
+import { vi } from "vitest";
 import TeamForm from "./TeamForm";
 
 describe("Given the TeamForm component", () => {
   const user = userEvent.setup();
 
+  const mockFunction = vi.fn();
+
   describe("When it's rendered", () => {
     test("Then it should show 'Name', 'Rider name 1', 'Rider name 2', 'Debut year in MotoGP', 'Is it a Official Team', 'Number of Championship titles', 'Image URL', 'Alternative Text' and 'Description' fields", () => {
-      render(<TeamForm />);
+      render(<TeamForm submitTeamData={mockFunction} />);
 
       const nameField = screen.getByLabelText("Name");
       const riderName1Field = screen.getByLabelText(/rider name 1/i);
@@ -37,7 +40,7 @@ describe("Given the TeamForm component", () => {
     test("Then it should show a disabled 'Create Team' button", () => {
       const buttonText = /create team/i;
 
-      render(<TeamForm />);
+      render(<TeamForm submitTeamData={mockFunction} />);
 
       const createTeamButton = screen.getByRole("button", {
         name: buttonText,
@@ -52,7 +55,7 @@ describe("Given the TeamForm component", () => {
     test("Then it should show 'Aniol's team' inside the Name field", async () => {
       const expectedNameFieldText = "Aniol's team";
 
-      render(<TeamForm />);
+      render(<TeamForm submitTeamData={mockFunction} />);
 
       const nameField = screen.getByLabelText("Name");
       await user.type(nameField, expectedNameFieldText);
@@ -63,7 +66,7 @@ describe("Given the TeamForm component", () => {
 
   describe("When the user fills all the fields", () => {
     test("Then the 'Create team' button should be enabled", async () => {
-      render(<TeamForm />);
+      render(<TeamForm submitTeamData={mockFunction} />);
 
       const nameField = screen.getByLabelText("Name");
       const riderName1Field = screen.getByLabelText(/rider name 1/i);
