@@ -43,6 +43,20 @@ class TeamsClient implements TeamsClientStructure {
 
     return teams;
   }
+
+  async deleteTeam(teamId: string): Promise<Team> {
+    const response = await fetch(`${this.apiRestUrl}/teams/${teamId}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to delete a team");
+    }
+
+    const { team } = (await response.json()) as { team: Team };
+
+    return team;
+  }
 }
 
 export default TeamsClient;
