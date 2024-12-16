@@ -193,7 +193,7 @@ describe("Given the AppRouter component", () => {
             );
           }),
         );
-        const toastText = "A team with Aniol's team name already exists";
+        const toastText = /A team with Aniol's team name already exists/i;
 
         render(
           <MemoryRouter initialEntries={[addNewTeamPage]}>
@@ -203,7 +203,7 @@ describe("Given the AppRouter component", () => {
           </MemoryRouter>,
         );
 
-        submitForm();
+        await submitForm();
 
         const toast = await screen.findByText(toastText);
 
@@ -218,7 +218,7 @@ describe("Given the AppRouter component", () => {
             return HttpResponse.error();
           }),
         );
-        const toastText = "Failed to add a new team";
+        const toastText = /Failed to add a new team/i;
 
         render(
           <MemoryRouter initialEntries={[addNewTeamPage]}>
@@ -228,7 +228,7 @@ describe("Given the AppRouter component", () => {
           </MemoryRouter>,
         );
 
-        submitForm();
+        await submitForm();
 
         const toast = await screen.findByText(toastText);
 
@@ -256,7 +256,7 @@ describe("Given the AppRouter component", () => {
           </MemoryRouter>,
         );
 
-        submitForm();
+        await submitForm();
 
         const toast = await screen.findByText(expectedToastMessage);
 
@@ -282,7 +282,7 @@ describe("Given the AppRouter component", () => {
           </MemoryRouter>,
         );
 
-        submitForm();
+        await submitForm();
 
         const pageTitle = await screen.findByRole("heading", {
           name: expectedPageTitle,
