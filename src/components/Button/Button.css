@@ -4,4 +4,6 @@
   color: #f7f7f7;
   font-weight: 300;
   background-color: var(--button-main-color);
+  width: 97px;
+  height: 40px;
 }
