@@ -12,3 +12,7 @@
   width: 220px;
   padding: 10px;
 }
+
+.button__not-found {
+  width: fit-content;
+}

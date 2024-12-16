@@ -1,3 +1,6 @@
+import Button from "../../../components/Button/Button";
+import TeamsClient from "../../client/TeamsClient";
+import useTeams from "../../hooks/useTeams";
 import { Team } from "../../types";
 import "./TeamCard.css";
 
@@ -7,7 +10,13 @@ interface TeamCardProps {
 }
 
 const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
-  const { imageUrl, altImageText, name, ridersNames } = team;
+  const { imageUrl, altImageText, name, ridersNames, _id } = team;
+  const { fetchTeams } = useTeams();
+
+  const deleteTeams = async () => {
+    await new TeamsClient().deleteTeam(_id);
+    await fetchTeams();
+  };
 
   return (
     <article className="team-card">
@@ -25,6 +34,9 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
           <h3 className="team-card__riders-title">Team riders</h3>
           <span>{ridersNames[0]}</span>
           <span>{ridersNames[1]}</span>
+        </div>
+        <div className="button__container">
+          <Button children="Delete" onClick={deleteTeams} />
         </div>
       </div>
     </article>
