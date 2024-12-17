@@ -1,4 +1,6 @@
 import Button from "../../../components/Button/Button";
+import { useAppDispatch } from "../../../store/hooks";
+import { displayLoading, hideLoading } from "../../../uiSlice";
 import TeamsClient from "../../client/TeamsClient";
 import useTeams from "../../hooks/useTeams";
 import { deleteTeamError } from "../../toasts/errors/errors";
@@ -14,13 +16,20 @@ interface TeamCardProps {
 const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
   const { imageUrl, altImageText, name, ridersNames, _id } = team;
   const { fetchTeams } = useTeams();
+  const dispatch = useAppDispatch();
 
   const deleteTeams = async () => {
+    dispatch(displayLoading());
+
     try {
       await new TeamsClient().deleteTeam(_id);
       await fetchTeams();
+
+      dispatch(hideLoading());
+
       deleteTeamFeedback();
     } catch (error) {
+      dispatch(hideLoading());
       deleteTeamError(error as Error);
     }
   };

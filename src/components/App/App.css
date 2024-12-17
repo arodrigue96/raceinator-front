@@ -27,9 +27,10 @@
 }
 
 .Toastify__toast-icon {
+  display: flex;
+  justify-content: center;
   width: 50px;
   aspect-ratio: 1;
-  background: 0;
   margin: 0;
 }
 
@@ -39,9 +40,4 @@
   justify-content: center;
   gap: 20px;
   text-align: center;
-}
-
-.Toastify__toast-icon {
-  display: flex;
-  justify-content: center;
 }
