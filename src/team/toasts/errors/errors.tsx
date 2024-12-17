@@ -3,7 +3,7 @@ import "./errors.css";
 
 export const loadingTeamError = () => {
   toast.error(`Failed to load teams`, {
-    className: "toast__loading-error",
+    className: "toast__errors",
     closeButton: false,
     icon: <img src="icons/alert.svg" />,
   });
@@ -16,7 +16,7 @@ export const addNewTeamError = (error: Error) => {
       : error.message,
     {
       closeButton: false,
-      className: "toast__loading-error",
+      className: "toast__errors",
       icon: <img src="icons/alert.svg" />,
     },
   );
@@ -29,7 +29,7 @@ export const deleteTeamError = (error: Error) => {
       : error.message,
     {
       closeButton: false,
-      className: "toast__loading-error",
+      className: "toast__errors",
       icon: <img src="icons/alert.svg" />,
     },
   );
