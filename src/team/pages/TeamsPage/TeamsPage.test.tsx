@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import TeamsPage from "./TeamsPage";
 import { Provider } from "react-redux";
-import { store } from "../../store";
+import { store } from "../../../store";
+import TeamsPage from "./TeamsPage";
 
 describe("Given the TeamsPage component", () => {
   describe("When it's rendered", () => {

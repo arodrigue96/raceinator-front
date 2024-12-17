@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import TeamCard from "./TeamCard";
-import { teamMock1 } from "../../mocks/teamsMock";
-import { store } from "../../store";
 import { Provider } from "react-redux";
+import { store } from "../../../store";
+import { teamMock1 } from "../../mocks/teamsMock";
+import TeamCard from "./TeamCard";
 
 describe("Given the TeamCard component", () => {
   describe("When it receives a team with the name 'Aniol's team'", () => {

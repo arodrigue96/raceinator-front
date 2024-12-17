@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
 import TeamsClient from "../client/TeamsClient";
 import { loadTeams } from "../slice";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { loadingTeamError } from "../toasts/errors/errors";
 
 const useTeams = () => {

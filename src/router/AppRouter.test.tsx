@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { http, HttpResponse } from "msw";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
-import { store } from "../team/store";
+import { store } from "../store";
 import { server } from "../mocks/node";
 import { apiRestUrl } from "../team/client/TeamsClient";
 import { addNewTeamPage, notFoundPage, teamsPage } from "./routes";

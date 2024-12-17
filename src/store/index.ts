@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import teamsReducer from "../slice/index";
+import teamsReducer from "../team/slice";
 
 export const store = configureStore({
   reducer: {
