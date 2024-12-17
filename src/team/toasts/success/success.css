@@ -1,8 +1,4 @@
 .toast__success {
   background-color: #b6df86;
-  color: #4caf50;
-  font-size: 1.125rem;
-  border-radius: 10px;
-  padding: 20px;
-  font-weight: 500;
+  color: #000;
 }

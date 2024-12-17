@@ -1,6 +1,8 @@
 import Button from "../../../components/Button/Button";
 import TeamsClient from "../../client/TeamsClient";
 import useTeams from "../../hooks/useTeams";
+import { deleteTeamError } from "../../toasts/errors/errors";
+import { deleteTeamFeedback } from "../../toasts/success/success";
 import { Team } from "../../types";
 import "./TeamCard.css";
 
@@ -14,8 +16,13 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
   const { fetchTeams } = useTeams();
 
   const deleteTeams = async () => {
-    await new TeamsClient().deleteTeam(_id);
-    await fetchTeams();
+    try {
+      await new TeamsClient().deleteTeam(_id);
+      await fetchTeams();
+      deleteTeamFeedback();
+    } catch (error) {
+      deleteTeamError(error as Error);
+    }
   };
 
   return (
