@@ -4,7 +4,7 @@ import Loader from "../../../components/Loader/Loader";
 import useTeams from "../../hooks/useTeams";
 
 const TeamsPage: React.FC = () => {
-  const { teams, isLoading, fetchTeams } = useTeams();
+  const { teams, fetchTeams, isLoading } = useTeams();
 
   useEffect(() => {
     fetchTeams();

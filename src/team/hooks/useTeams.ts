@@ -1,33 +1,34 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import TeamsClient from "../client/TeamsClient";
 import { loadTeams } from "../slice";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { loadingTeamError } from "../toasts/errors/errors";
+import { displayLoading, hideLoading } from "../../uiSlice";
 
 const useTeams = () => {
-  const [isLoading, setIsLoading] = useState(false);
-
   const teams = useAppSelector((state) => state.teamsState.teams);
+  const isLoading = useAppSelector((state) => state.uiState.isLoading);
+
   const dispatch = useAppDispatch();
 
   const fetchTeams = useCallback(async () => {
-    setIsLoading(true);
+    dispatch(displayLoading());
 
     try {
       const teamsData = await new TeamsClient().getTeams();
       dispatch(loadTeams(teamsData));
 
-      setIsLoading(false);
+      dispatch(hideLoading());
     } catch {
-      setIsLoading(false);
+      dispatch(hideLoading());
       loadingTeamError();
     }
   }, [dispatch]);
 
   return {
     teams,
-    isLoading,
     fetchTeams,
+    isLoading,
   };
 };
 

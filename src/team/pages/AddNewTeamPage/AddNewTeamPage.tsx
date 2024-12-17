@@ -1,4 +1,3 @@
-import { useState } from "react";
 import TeamForm from "../../components/TeamForm/TeamForm";
 import useTeamForm from "../../hooks/useTeamForm";
 import { addNewTeamError } from "../../toasts/errors/errors";
@@ -7,23 +6,28 @@ import Loader from "../../../components/Loader/Loader";
 import { useNavigate } from "react-router";
 import { teamsPage } from "../../../router/routes";
 import { createTeamFeedback } from "../../toasts/success/success";
+import { useAppDispatch } from "../../../store/hooks";
+import { displayLoading, hideLoading } from "../../../uiSlice";
+import useTeams from "../../hooks/useTeams";
 
 const AddNewTeamPage: React.FC = () => {
   const { createTeam } = useTeamForm();
-  const [isLoading, setIsLoading] = useState(false);
+  const { isLoading } = useTeams();
+
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const sendTeamDataToApiRest = async (teamData: TeamWithoutId) => {
-    setIsLoading(true);
+    dispatch(displayLoading());
 
     try {
       await createTeam(teamData);
 
-      setIsLoading(false);
+      dispatch(hideLoading());
       navigate(teamsPage);
       createTeamFeedback();
     } catch (error) {
-      setIsLoading(false);
+      dispatch(hideLoading());
       addNewTeamError(error as Error);
     }
   };
