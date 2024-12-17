@@ -1,5 +1,5 @@
 import { http, HttpResponse } from "msw";
-import teamsMock, { teamMock2, teamMock3 } from "./teamsMock";
+import teamsMock, { teamMock1, teamMock2, teamMock3 } from "./teamsMock";
 import { Team } from "../types";
 import { apiRestUrl } from "../client/TeamsClient";
 
@@ -23,6 +23,12 @@ export const handlers = [
   http.delete(`${apiRestUrl}/teams/${teamMock2._id}`, () => {
     return HttpResponse.json<{ team: Team }>({
       team: teamMock2,
+    });
+  }),
+
+  http.get(`${apiRestUrl}/teams/${teamMock1._id}`, () => {
+    return HttpResponse.json<{ team: Team }>({
+      team: teamMock1,
     });
   }),
 ];
