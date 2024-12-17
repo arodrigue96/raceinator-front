@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface uiState {
+interface UiState {
   isLoading: boolean;
 }
 
-const loadingInitialState: uiState = {
+const loadingInitialState: UiState = {
   isLoading: false,
 };
 
@@ -12,13 +12,13 @@ const uiSlice = createSlice({
   name: "ui",
   initialState: loadingInitialState,
   reducers: {
-    displayLoading: (state): uiState => {
+    displayLoading: (state): UiState => {
       return {
         ...state,
         isLoading: true,
       };
     },
-    hideLoading: (state): uiState => {
+    hideLoading: (state): UiState => {
       return {
         ...state,
         isLoading: false,
