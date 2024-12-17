@@ -2,10 +2,10 @@ import { toast } from "react-toastify";
 import "./errors.css";
 
 export const loadingTeamError = () => {
-  toast.error(`Failed to Load teams`, {
-    autoClose: 5000,
+  toast.error(`Failed to load teams`, {
     className: "toast__loading-error",
     closeButton: false,
+    icon: <img src="icons/alert.svg" />,
   });
 };
 
@@ -15,9 +15,22 @@ export const addNewTeamError = (error: Error) => {
       ? "Failed to add a new team"
       : error.message,
     {
-      autoClose: 5000,
-      className: "toast__loading-error",
       closeButton: false,
+      className: "toast__loading-error",
+      icon: <img src="icons/alert.svg" />,
+    },
+  );
+};
+
+export const deleteTeamError = (error: Error) => {
+  toast.error(
+    error.message.includes("Failed to fetch")
+      ? "Failed to delete a team"
+      : error.message,
+    {
+      closeButton: false,
+      className: "toast__loading-error",
+      icon: <img src="icons/alert.svg" />,
     },
   );
 };
