@@ -1,5 +1,5 @@
 import { TeamWithoutId } from "../../types";
-import TeamsClient from "../TeamsClient";
+import { teamsClient } from "../TeamsClient";
 
 describe("Given the createTeam method of TeamsClient class", () => {
   describe("When it's called and receives the team name 'Aniol's team'", () => {
@@ -15,7 +15,7 @@ describe("Given the createTeam method of TeamsClient class", () => {
         isOfficialTeam: true,
       };
 
-      const newTeam = await new TeamsClient().createTeam(teamData);
+      const newTeam = await teamsClient.createTeam(teamData);
 
       expect(newTeam).toEqual(expect.objectContaining(teamData));
     });

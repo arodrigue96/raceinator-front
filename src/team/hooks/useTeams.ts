@@ -1,9 +1,9 @@
 import { useCallback } from "react";
-import TeamsClient from "../client/TeamsClient";
 import { loadTeams } from "../slice";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { loadingTeamError } from "../toasts/errors/errors";
 import { displayLoading, hideLoading } from "../../uiSlice";
+import { teamsClient } from "../client/TeamsClient";
 
 const useTeams = () => {
   const teams = useAppSelector((state) => state.teamsState.teams);
@@ -15,7 +15,7 @@ const useTeams = () => {
     dispatch(displayLoading());
 
     try {
-      const teamsData = await new TeamsClient().getTeams();
+      const teamsData = await teamsClient.getTeams();
       dispatch(loadTeams(teamsData));
 
       dispatch(hideLoading());

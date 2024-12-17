@@ -119,6 +119,12 @@ describe("Given the AppRouter component", () => {
         const expectedLoaderText = /Loading Spinner/i;
         const buttonText = /Delete/i;
 
+        http.delete(`${apiRestUrl}/teams/${teamMock2._id}`, () => {
+          return HttpResponse.json<{ team: Team }>({
+            team: teamMock2,
+          });
+        });
+
         render(
           <MemoryRouter initialEntries={[teamsPage]}>
             <Provider store={store}>
