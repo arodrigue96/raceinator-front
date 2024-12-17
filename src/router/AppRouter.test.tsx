@@ -3,12 +3,12 @@ import { render, screen } from "@testing-library/react";
 import { http, HttpResponse } from "msw";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
-import { store } from "../team/store";
+import { store } from "../store";
 import { server } from "../mocks/node";
 import { apiRestUrl } from "../team/client/TeamsClient";
 import { addNewTeamPage, notFoundPage, teamsPage } from "./routes";
 import AppRouter from "./AppRouter";
-import { teamMock1 } from "../team/mocks/teamsMock";
+import { teamMock1, teamMock2 } from "../team/mocks/teamsMock";
 import { Team } from "../team/types";
 
 describe("Given the AppRouter component", () => {
@@ -109,6 +109,64 @@ describe("Given the AppRouter component", () => {
         );
 
         const toast = await screen.findByText(toastText);
+
+        expect(toast).toBeInTheDocument();
+      });
+    });
+
+    describe("And when the user clicks to 'Delete button", () => {
+      test("Then it should show a spinner with 'Loading Spinner' text", async () => {
+        const expectedLoaderText = /Loading Spinner/i;
+        const buttonText = /Delete/i;
+
+        render(
+          <MemoryRouter initialEntries={[teamsPage]}>
+            <Provider store={store}>
+              <AppRouter />
+            </Provider>
+          </MemoryRouter>,
+        );
+
+        const deleteButton = screen.getAllByRole("button", {
+          name: buttonText,
+        });
+
+        await user.click(deleteButton[0]);
+
+        const loader = screen.getByLabelText(expectedLoaderText);
+
+        expect(loader).toBeInTheDocument();
+      });
+    });
+
+    describe("And when the user clicks to 'Delete button' and the API REST responds with status 200", () => {
+      test("Then it should show a toast with 'Team deleted' text", async () => {
+        const expectedToastText = /Team deleted/i;
+        const buttonsText = /Delete/i;
+
+        server.use(
+          http.delete(`${apiRestUrl}/teams/${teamMock2._id}`, () => {
+            return HttpResponse.json<{ team: Team }>({
+              team: teamMock2,
+            });
+          }),
+        );
+
+        render(
+          <MemoryRouter initialEntries={[teamsPage]}>
+            <Provider store={store}>
+              <AppRouter />
+            </Provider>
+          </MemoryRouter>,
+        );
+
+        const deleteButton = screen.getAllByRole("button", {
+          name: buttonsText,
+        });
+
+        await user.click(deleteButton[1]);
+
+        const toast = await screen.findByText(expectedToastText);
 
         expect(toast).toBeInTheDocument();
       });

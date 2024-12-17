@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import AddNewTeamPage from "./AddNewTeamPage";
 import { MemoryRouter } from "react-router";
+import { Provider } from "react-redux";
+import { store } from "../../../store";
 
 describe("Given the AddNewTeamPage component", () => {
   describe("When it's rendered", () => {
@@ -9,7 +11,9 @@ describe("Given the AddNewTeamPage component", () => {
 
       render(
         <MemoryRouter>
-          <AddNewTeamPage />
+          <Provider store={store}>
+            <AddNewTeamPage />
+          </Provider>
         </MemoryRouter>,
       );
 
@@ -23,9 +27,12 @@ describe("Given the AddNewTeamPage component", () => {
     test("Then it should show 'Name', 'Rider name 1', 'Rider name 2', 'Debut year in MotoGP', 'Is it a Official Team', 'Number of Championship titles', 'Image URL', 'Alternative Text' and 'Description' fields", () => {
       render(
         <MemoryRouter>
-          <AddNewTeamPage />
+          <Provider store={store}>
+            <AddNewTeamPage />
+          </Provider>
         </MemoryRouter>,
       );
+
       const nameField = screen.getByLabelText("Name");
       const riderName1Field = screen.getByLabelText(/rider name 1/i);
       const riderName2Field = screen.getByLabelText(/rider name 2/i);
@@ -56,9 +63,12 @@ describe("Given the AddNewTeamPage component", () => {
 
       render(
         <MemoryRouter>
-          <AddNewTeamPage />
+          <Provider store={store}>
+            <AddNewTeamPage />
+          </Provider>
         </MemoryRouter>,
       );
+
       const createTeamButton = screen.getByRole("button", {
         name: buttonText,
       });

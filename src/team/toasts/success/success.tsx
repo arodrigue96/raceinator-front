@@ -12,6 +12,6 @@ export const deleteTeamFeedback = () => {
   toast.success(`Team deleted`, {
     className: "toast__success",
     closeButton: false,
-    icon: <img src="icons/bin.svg" />,
+    icon: <img src="icons/bin.svg" alt="" />,
   });
 };

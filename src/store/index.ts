@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import teamsReducer from "../slice/index";
+import teamsReducer from "../team/slice";
+import uiSliceReducer from "../uiSlice/index";
 
 export const store = configureStore({
   reducer: {
     teamsState: teamsReducer,
+    uiState: uiSliceReducer,
   },
 });
 

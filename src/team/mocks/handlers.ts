@@ -22,7 +22,7 @@ export const handlers = [
 
   http.delete(`${apiRestUrl}/teams/${teamMock2._id}`, () => {
     return HttpResponse.json<{ team: Team }>({
-      team: teamMock3,
+      team: teamMock2,
     });
   }),
 ];

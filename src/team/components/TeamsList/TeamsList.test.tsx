@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { store } from "../../../store";
 import TeamsList from "./TeamsList";
 import teamsMock from "../../mocks/teamsMock";
-import { Provider } from "react-redux";
-import { store } from "../../store";
 
 describe("Given the TeamsList component", () => {
   describe("When it receives a list of teams with 'Aniol's team' and 'Mario's team'", () => {
