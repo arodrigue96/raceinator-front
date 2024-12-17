@@ -16,9 +16,8 @@ const App: React.FC = () => {
           <main>
             <Outlet />
             <ToastContainer
-              className="toast-container"
               position="top-center"
-              autoClose={5000}
+              autoClose={4000}
               hideProgressBar={true}
               newestOnTop
               closeOnClick
