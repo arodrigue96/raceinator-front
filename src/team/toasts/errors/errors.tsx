@@ -30,7 +30,7 @@ export const deleteTeamError = (error: Error) => {
     {
       closeButton: false,
       className: "toast__errors",
-      icon: <img src="icons/alert.svg" />,
+      icon: <img src="icons/alert.svg" alt="" />,
     },
   );
 };

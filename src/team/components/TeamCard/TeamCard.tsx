@@ -1,7 +1,7 @@
-import Button from "../../../components/Button/Button";
-import { useAppDispatch } from "../../../store/hooks";
 import { displayLoading, hideLoading } from "../../../uiSlice";
-import TeamsClient from "../../client/TeamsClient";
+import { useAppDispatch } from "../../../store/hooks";
+import Button from "../../../components/Button/Button";
+import { teamsClient } from "../../client/TeamsClient";
 import useTeams from "../../hooks/useTeams";
 import { deleteTeamError } from "../../toasts/errors/errors";
 import { deleteTeamFeedback } from "../../toasts/success/success";
@@ -22,7 +22,7 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
     dispatch(displayLoading());
 
     try {
-      await new TeamsClient().deleteTeam(_id);
+      await teamsClient.deleteTeam(_id);
       await fetchTeams();
 
       dispatch(hideLoading());

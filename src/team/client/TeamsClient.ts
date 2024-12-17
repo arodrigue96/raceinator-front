@@ -59,4 +59,4 @@ class TeamsClient implements TeamsClientStructure {
   }
 }
 
-export default TeamsClient;
+export const teamsClient = new TeamsClient();

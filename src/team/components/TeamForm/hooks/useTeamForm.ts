@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { TeamFormData, TeamWithoutId } from "../types";
-import TeamsClient from "../client/TeamsClient";
+import { teamsClient } from "../../../client/TeamsClient";
+import { TeamFormData, TeamWithoutId } from "../../../types";
 
 const useTeamForm = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -81,8 +81,6 @@ const useTeamForm = () => {
   };
 
   const createTeam = (teamData: TeamWithoutId) => {
-    const teamsClient = new TeamsClient();
-
     const newTeam = teamsClient.createTeam(teamData);
 
     return newTeam;
