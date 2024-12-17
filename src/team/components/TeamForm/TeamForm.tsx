@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import Button from "../../../components/Button/Button";
-import useTeamForm from "../../hooks/useTeamForm";
 import { TeamWithoutId } from "../../types";
 import "./TeamForm.css";
+import useTeamForm from "./hooks/useTeamForm";
 
 interface TeamFormProps {
   submitTeamData: (teamData: TeamWithoutId) => void;

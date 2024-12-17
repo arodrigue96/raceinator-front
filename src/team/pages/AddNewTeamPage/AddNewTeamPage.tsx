@@ -1,5 +1,4 @@
 import TeamForm from "../../components/TeamForm/TeamForm";
-import useTeamForm from "../../hooks/useTeamForm";
 import { addNewTeamError } from "../../toasts/errors/errors";
 import { TeamWithoutId } from "../../types";
 import Loader from "../../../components/Loader/Loader";
@@ -9,6 +8,7 @@ import { createTeamFeedback } from "../../toasts/success/success";
 import { useAppDispatch } from "../../../store/hooks";
 import { displayLoading, hideLoading } from "../../../uiSlice";
 import useTeams from "../../hooks/useTeams";
+import useTeamForm from "../../components/TeamForm/hooks/useTeamForm";
 
 const AddNewTeamPage: React.FC = () => {
   const { createTeam } = useTeamForm();
