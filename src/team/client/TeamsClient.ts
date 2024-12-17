@@ -57,6 +57,18 @@ class TeamsClient implements TeamsClientStructure {
 
     return team;
   }
+
+  async getTeamById(teamId: string): Promise<Team> {
+    const response = await fetch(`${this.apiRestUrl}/teams/${teamId}`);
+
+    if (!response.ok) {
+      throw new Error("Failed to load the team");
+    }
+
+    const { team } = (await response.json()) as { team: Team };
+
+    return team;
+  }
 }
 
 export const teamsClient = new TeamsClient();
