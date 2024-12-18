@@ -6,7 +6,12 @@ import { Provider } from "react-redux";
 import { store } from "../store";
 import { server } from "../mocks/node";
 import { apiRestUrl } from "../team/client/TeamsClient";
-import { addNewTeamPage, notFoundPage, teamsPage } from "./routes";
+import {
+  addNewTeamPage,
+  notFoundPage,
+  teamDetailPage,
+  teamsPage,
+} from "./routes";
 import AppRouter from "./AppRouter";
 import { teamMock1, teamMock2 } from "../team/mocks/teamsMock";
 import { Team } from "../team/types";
@@ -353,6 +358,27 @@ describe("Given the AppRouter component", () => {
         });
 
         expect(pageTitle).toBeInTheDocument();
+      });
+    });
+  });
+
+  describe("When it is rendered at '/teams/:teamId", () => {
+    describe("When it receives the team id '36b8f84d-df4e-4d49-b662-bcde71a8764f'", () => {
+      test("Then it should show 'Aniol's team' inside a heading", async () => {
+        const expectedTitleText = /Aniol's team/i;
+
+        render(
+          <MemoryRouter initialEntries={[`${teamDetailPage}/${teamMock1._id}`]}>
+            <Provider store={store}>
+              <AppRouter />
+            </Provider>
+          </MemoryRouter>,
+        );
+        const title = await screen.findByRole("heading", {
+          name: expectedTitleText,
+        });
+
+        expect(title).toBeInTheDocument();
       });
     });
   });
