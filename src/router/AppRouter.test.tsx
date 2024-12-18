@@ -95,6 +95,33 @@ describe("Given the AppRouter component", () => {
       });
     });
 
+    describe("And when the user clicks to 'Details' link from 'Aniol's team'", () => {
+      test("Then it should show 'Aniol's team' inside a heading", async () => {
+        const pageTitleText = /Aniol's team/i;
+        const linkText = /Details/i;
+
+        render(
+          <MemoryRouter initialEntries={[teamsPage]}>
+            <Provider store={store}>
+              <AppRouter />
+            </Provider>
+          </MemoryRouter>,
+        );
+
+        const addNewTeamLink = await screen.findAllByRole("link", {
+          name: linkText,
+        });
+
+        await user.click(addNewTeamLink[0]);
+
+        const pageTitle = await screen.findByRole("heading", {
+          name: pageTitleText,
+        });
+
+        expect(pageTitle).toBeInTheDocument();
+      });
+    });
+
     describe("And when the client throws an error with 'Failed to load teams'", () => {
       test("Then it should show a toast with the message 'Failed to load teams", async () => {
         const toastText = /Failed to load teams/i;
