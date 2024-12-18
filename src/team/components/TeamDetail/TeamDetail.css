@@ -1,0 +1,44 @@
+.team-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  h2 {
+    font-size: 1.125rem;
+  }
+}
+
+.team-detail__image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.team-information {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 700;
+}
+
+.team-information__official-team {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.team-information__container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.team-information__riders-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-information__championship-titles {
+  display: flex;
+  gap: 5px;
+}

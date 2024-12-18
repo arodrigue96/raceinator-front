@@ -45,7 +45,8 @@ button:disabled {
   background-color: #808080;
 }
 
-ul {
+ul,
+ol {
   list-style-type: none;
   padding: 0;
   margin: 0;
