@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { store } from "../../../store";
 import TeamsList from "./TeamsList";
 import teamsMock from "../../mocks/teamsMock";
+import { MemoryRouter } from "react-router";
 
 describe("Given the TeamsList component", () => {
   describe("When it receives a list of teams with 'Aniol's team' and 'Mario's team'", () => {
@@ -11,9 +12,11 @@ describe("Given the TeamsList component", () => {
       const expectedTeam2AltText = /The motorbikes of Mario's team/i;
 
       render(
-        <Provider store={store}>
-          <TeamsList teams={teamsMock} />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <TeamsList teams={teamsMock} />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const team1AlternativeText = screen.getByAltText(expectedTeam1AltText);
@@ -28,9 +31,11 @@ describe("Given the TeamsList component", () => {
       const expectedTeamNameText2 = /Mario's team/i;
 
       render(
-        <Provider store={store}>
-          <TeamsList teams={teamsMock} />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <TeamsList teams={teamsMock} />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const teamName1 = screen.getByRole("heading", {

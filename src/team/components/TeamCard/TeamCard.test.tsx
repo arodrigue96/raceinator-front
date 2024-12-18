@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { store } from "../../../store";
 import { teamMock1 } from "../../mocks/teamsMock";
 import TeamCard from "./TeamCard";
+import { MemoryRouter } from "react-router";
 
 describe("Given the TeamCard component", () => {
   describe("When it receives a team with the name 'Aniol's team'", () => {
@@ -10,9 +11,11 @@ describe("Given the TeamCard component", () => {
       const expectedAltImageText = /The motorbikes of Aniol's team/i;
 
       render(
-        <Provider store={store}>
-          <TeamCard team={teamMock1} />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <TeamCard team={teamMock1} />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const teamCardAltImage = screen.getByAltText(expectedAltImageText);
@@ -24,9 +27,11 @@ describe("Given the TeamCard component", () => {
       const expectedNameText = /Aniol's team/i;
 
       render(
-        <Provider store={store}>
-          <TeamCard team={teamMock1} />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <TeamCard team={teamMock1} />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const teamName = screen.getByRole("heading", {
@@ -40,9 +45,11 @@ describe("Given the TeamCard component", () => {
       const expectedNameText = /Team riders/i;
 
       render(
-        <Provider store={store}>
-          <TeamCard team={teamMock1} />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <TeamCard team={teamMock1} />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const teamRidersTitle = screen.getByRole("heading", {
@@ -54,9 +61,11 @@ describe("Given the TeamCard component", () => {
 
     test("Then it should show 'Aniol Rodriguez and 'Erik Riquelme' texts", () => {
       render(
-        <Provider store={store}>
-          <TeamCard team={teamMock1} />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <TeamCard team={teamMock1} />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const teamRider1 = screen.getByText(/Aniol Rodriguez/i);
@@ -66,13 +75,33 @@ describe("Given the TeamCard component", () => {
       expect(teamRider2).toBeInTheDocument();
     });
 
+    test("Then it should show a 'Details' button", () => {
+      const expectedButtonName = /Details/i;
+
+      render(
+        <MemoryRouter>
+          <Provider store={store}>
+            <TeamCard team={teamMock1} />
+          </Provider>
+        </MemoryRouter>,
+      );
+
+      const button = screen.getByRole("button", {
+        name: expectedButtonName,
+      });
+
+      expect(button).toBeInTheDocument();
+    });
+
     test("Then it should show a 'Delete' button", () => {
       const expectedButtonName = /Delete/i;
 
       render(
-        <Provider store={store}>
-          <TeamCard team={teamMock1} />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <TeamCard team={teamMock1} />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const button = screen.getByRole("button", {

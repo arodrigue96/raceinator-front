@@ -12,7 +12,7 @@ const NavMenu: React.FC = () => {
             return (
               <>
                 <img
-                  src={isActive ? "icons/home_black.svg" : "icons/home.svg"}
+                  src={isActive ? "/icons/home_black.svg" : "/icons/home.svg"}
                   alt="Go to home page"
                   width={30}
                   height={30}
@@ -30,7 +30,9 @@ const NavMenu: React.FC = () => {
               <>
                 <img
                   src={
-                    isActive ? "icons/add-team_black.svg" : "icons/add-team.svg"
+                    isActive
+                      ? "/icons/add-team_black.svg"
+                      : "/icons/add-team.svg"
                   }
                   alt="Go to add new team page"
                   width={30}
