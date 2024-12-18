@@ -2,10 +2,14 @@ import { lazy } from "react";
 import { Route, Navigate, Routes } from "react-router";
 import App from "../components/App/App";
 import TeamsPage from "../team/pages/TeamsPage/TeamsPage";
-import { addNewTeamPage, teamsPage } from "./routes";
+import { addNewTeamPage, teamDetailPage, teamsPage } from "./routes";
 
 export const NotFoundPage = lazy(
   () => import("../pages/NotFoundPage/NotFoundPage"),
+);
+
+export const TeamDetailPage = lazy(
+  () => import("../team/pages/TeamDetailPage/TeamDetailPage"),
 );
 
 export const AddNewTeamPage = lazy(
@@ -19,6 +23,10 @@ const AppRouter: React.FC = () => {
         <Route index element={<Navigate to={teamsPage} />} />
         <Route path={teamsPage} element={<TeamsPage />} />
         <Route path={addNewTeamPage} element={<AddNewTeamPage />} />
+        <Route
+          path={`${teamDetailPage}/:teamId`}
+          element={<TeamDetailPage />}
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
