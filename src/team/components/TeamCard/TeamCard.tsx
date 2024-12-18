@@ -19,9 +19,9 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
   const { fetchTeams } = useTeams();
   const dispatch = useAppDispatch();
 
-  const teamDetail = `${teamDetailPage}/${team._id}`;
+  const teamDetailRoute = `${teamDetailPage}/${team._id}`;
 
-  const deleteTeams = async () => {
+  const deleteTeam = async () => {
     dispatch(displayLoading());
 
     try {
@@ -58,9 +58,9 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
           <Button
             className="details-button"
             children="Details"
-            linkTo={teamDetail}
+            linkTo={teamDetailRoute}
           />
-          <Button children="Delete" onClick={deleteTeams} />
+          <Button children="Delete" onClick={deleteTeam} />
         </div>
       </div>
     </article>
