@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
+import TeamsPage from "./TeamsPage";
 import { Provider } from "react-redux";
 import { store } from "../../../store";
-import TeamsPage from "./TeamsPage";
+import { MemoryRouter } from "react-router";
 
 describe("Given the TeamsPage component", () => {
   describe("When it's rendered", () => {
@@ -40,9 +41,11 @@ describe("Given the TeamsPage component", () => {
       const expectedTeam2AltText = /The motorbikes of Mario's team/i;
 
       render(
-        <Provider store={store}>
-          <TeamsPage />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <TeamsPage />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const team1AlternativeText =
@@ -59,9 +62,11 @@ describe("Given the TeamsPage component", () => {
       const expectedTeamNameText2 = /Mario's team/i;
 
       render(
-        <Provider store={store}>
-          <TeamsPage />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <TeamsPage />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const teamName1 = await screen.findByRole("heading", {
