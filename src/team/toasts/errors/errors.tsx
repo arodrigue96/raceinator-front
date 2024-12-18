@@ -1,8 +1,16 @@
 import { toast } from "react-toastify";
 import "./errors.css";
 
-export const loadingTeamError = () => {
+export const loadTeamsError = () => {
   toast.error(`Failed to load teams`, {
+    className: "toast__errors",
+    closeButton: false,
+    icon: <img src="/icons/alert.svg" alt="" />,
+  });
+};
+
+export const loadTeamDetailError = () => {
+  toast.error(`Failed to load team information`, {
     className: "toast__errors",
     closeButton: false,
     icon: <img src="/icons/alert.svg" alt="" />,

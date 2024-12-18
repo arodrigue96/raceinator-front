@@ -5,7 +5,7 @@ import TeamDetail from "../../components/TeamDetail/TeamDetail";
 import { teamsClient } from "../../client/TeamsClient";
 import { loadTeam } from "../../slice";
 import { displayLoading, hideLoading } from "../../../uiSlice";
-import { loadingTeamError } from "../../toasts/errors/errors";
+import { loadTeamDetailError } from "../../toasts/errors/errors";
 
 const TeamDetailPage: React.FC = () => {
   const { teamId } = useParams<{ teamId: string }>();
@@ -23,7 +23,7 @@ const TeamDetailPage: React.FC = () => {
       dispatch(hideLoading());
     } catch {
       dispatch(hideLoading());
-      loadingTeamError();
+      loadTeamDetailError();
     }
   }, [dispatch, teamId]);
 

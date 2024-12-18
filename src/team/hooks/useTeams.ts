@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { loadTeams } from "../slice";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { loadingTeamError } from "../toasts/errors/errors";
+import { loadTeamsError } from "../toasts/errors/errors";
 import { displayLoading, hideLoading } from "../../uiSlice";
 import { teamsClient } from "../client/TeamsClient";
 
@@ -21,7 +21,7 @@ const useTeams = () => {
       dispatch(hideLoading());
     } catch {
       dispatch(hideLoading());
-      loadingTeamError();
+      loadTeamsError();
     }
   }, [dispatch]);
 
