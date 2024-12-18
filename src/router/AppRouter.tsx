@@ -3,13 +3,10 @@ import { Route, Navigate, Routes } from "react-router";
 import App from "../components/App/App";
 import TeamsPage from "../team/pages/TeamsPage/TeamsPage";
 import { addNewTeamPage, teamDetailPage, teamsPage } from "./routes";
+import TeamDetailPage from "../team/pages/TeamDetailPage/TeamDetailPage";
 
 export const NotFoundPage = lazy(
   () => import("../pages/NotFoundPage/NotFoundPage"),
-);
-
-export const TeamDetailPage = lazy(
-  () => import("../team/pages/TeamDetailPage/TeamDetailPage"),
 );
 
 export const AddNewTeamPage = lazy(
