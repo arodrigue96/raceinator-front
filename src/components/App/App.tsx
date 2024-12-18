@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Loader from "../Loader/Loader";
 import Header from "../Header/Header";
 import NavMenu from "../NavMenu/NavMenu";
-import "./App.css";
+import("./App.css");
 
 const App: React.FC = () => {
   return (
