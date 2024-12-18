@@ -32,3 +32,12 @@
 .team-card__riders-title {
   font-size: 1.125rem;
 }
+
+.button__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details-button {
+  background-color: var(--button-secondary-main-color);
+}

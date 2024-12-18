@@ -52,6 +52,7 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
           <span>{ridersNames[1]}</span>
         </div>
         <div className="button__container">
+          <Button className="details-button" children="Details" />
           <Button children="Delete" onClick={deleteTeams} />
         </div>
       </div>
