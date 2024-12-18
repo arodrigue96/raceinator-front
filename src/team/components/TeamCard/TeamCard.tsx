@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import { displayLoading, hideLoading } from "../../../uiSlice";
 import { useAppDispatch } from "../../../store/hooks";
 import Button from "../../../components/Button/Button";
@@ -6,6 +7,7 @@ import useTeams from "../../hooks/useTeams";
 import { deleteTeamError } from "../../toasts/errors/errors";
 import { deleteTeamFeedback } from "../../toasts/success/success";
 import { Team } from "../../types";
+import { teamDetailPage } from "../../../router/routes";
 import "./TeamCard.css";
 
 interface TeamCardProps {
@@ -17,6 +19,7 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
   const { imageUrl, altImageText, name, ridersNames, _id } = team;
   const { fetchTeams } = useTeams();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const deleteTeams = async () => {
     dispatch(displayLoading());
@@ -32,6 +35,10 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
       dispatch(hideLoading());
       deleteTeamError(error as Error);
     }
+  };
+
+  const navigateToTeamDetailPage = () => {
+    navigate(`${teamDetailPage}/${team._id}`);
   };
 
   return (
@@ -52,7 +59,11 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
           <span>{ridersNames[1]}</span>
         </div>
         <div className="button__container">
-          <Button className="details-button" children="Details" />
+          <Button
+            className="details-button"
+            children="Details"
+            onClick={navigateToTeamDetailPage}
+          />
           <Button children="Delete" onClick={deleteTeams} />
         </div>
       </div>

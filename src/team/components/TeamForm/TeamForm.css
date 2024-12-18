@@ -54,7 +54,7 @@
   display: flex;
   justify-content: center;
   content: "✔";
-  color: #424242;
+  color: var(--button-secondary-main-color);
 }
 
 .team-form__description {
