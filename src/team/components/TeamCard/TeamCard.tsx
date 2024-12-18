@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router";
 import { displayLoading, hideLoading } from "../../../uiSlice";
 import { useAppDispatch } from "../../../store/hooks";
 import Button from "../../../components/Button/Button";
@@ -19,7 +18,8 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
   const { imageUrl, altImageText, name, ridersNames, _id } = team;
   const { fetchTeams } = useTeams();
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+
+  const teamDetail = `${teamDetailPage}/${team._id}`;
 
   const deleteTeams = async () => {
     dispatch(displayLoading());
@@ -35,10 +35,6 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
       dispatch(hideLoading());
       deleteTeamError(error as Error);
     }
-  };
-
-  const navigateToTeamDetailPage = () => {
-    navigate(`${teamDetailPage}/${team._id}`);
   };
 
   return (
@@ -62,7 +58,7 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
           <Button
             className="details-button"
             children="Details"
-            onClick={navigateToTeamDetailPage}
+            linkTo={teamDetail}
           />
           <Button children="Delete" onClick={deleteTeams} />
         </div>

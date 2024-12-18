@@ -76,7 +76,7 @@ describe("Given the TeamCard component", () => {
     });
 
     test("Then it should show a 'Details' button", () => {
-      const expectedButtonName = /Details/i;
+      const expectedLinkName = /Details/i;
 
       render(
         <MemoryRouter>
@@ -86,11 +86,11 @@ describe("Given the TeamCard component", () => {
         </MemoryRouter>,
       );
 
-      const button = screen.getByRole("button", {
-        name: expectedButtonName,
+      const link = screen.getByRole("link", {
+        name: expectedLinkName,
       });
 
-      expect(button).toBeInTheDocument();
+      expect(link).toBeInTheDocument();
     });
 
     test("Then it should show a 'Delete' button", () => {
