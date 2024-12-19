@@ -27,6 +27,7 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team }) => {
         alt={altImageText}
         width={480}
         height={304}
+        fetchPriority="high"
       />
       <div className="team-information">
         <div className="team-information__official-team">
@@ -37,6 +38,7 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team }) => {
               alt={`${name} is a official team`}
               width={24}
               height={24}
+              fetchPriority="high"
             />
           ) : (
             <img
@@ -44,6 +46,7 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team }) => {
               alt={`${name} is not a official team`}
               width={24}
               height={24}
+              fetchPriority="high"
             />
           )}
         </div>
@@ -68,9 +71,9 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team }) => {
                 <li key={championshipTitles.length - position}>
                   <img
                     src="/icons/championship-titles.svg"
-                    alt={`${position + 1} championship titple`}
-                    width={23}
-                    height={23}
+                    alt={`${position + 1} championship title`}
+                    width={24}
+                    height={24}
                   />
                 </li>
               ))}

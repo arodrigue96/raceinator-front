@@ -8,6 +8,7 @@ import { deleteTeamFeedback } from "../../toasts/success/success";
 import { Team } from "../../types";
 import { teamDetailPage } from "../../../router/routes";
 import "./TeamCard.css";
+import { Link } from "react-router";
 
 interface TeamCardProps {
   team: Team;
@@ -39,14 +40,17 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
 
   return (
     <article className="team-card">
-      <img
-        className="team-card__image"
-        src={imageUrl}
-        alt={altImageText}
-        width={447}
-        height={327}
-        loading={loading}
-      />
+      <Link to={teamDetailRoute}>
+        <img
+          className="team-card__image"
+          src={imageUrl}
+          alt={altImageText}
+          width={447}
+          height={327}
+          loading={loading}
+        />
+      </Link>
+
       <div className="team-card__information">
         <h2 className="team-card__name">{name}</h2>
         <div className="team-card__riders">
