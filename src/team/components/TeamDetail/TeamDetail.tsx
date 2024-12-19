@@ -38,7 +38,6 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team }) => {
               alt={`${name} is a official team`}
               width={24}
               height={24}
-              fetchPriority="high"
             />
           ) : (
             <img
@@ -46,7 +45,6 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team }) => {
               alt={`${name} is not a official team`}
               width={24}
               height={24}
-              fetchPriority="high"
             />
           )}
         </div>
