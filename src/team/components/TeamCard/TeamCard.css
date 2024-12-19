@@ -40,4 +40,5 @@
 
 .details-button {
   background-color: var(--button-secondary-main-color);
+  width: fit-content;
 }
