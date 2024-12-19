@@ -8,7 +8,6 @@ import { deleteTeamFeedback } from "../../toasts/success/success";
 import { Team } from "../../types";
 import { teamDetailPage } from "../../../router/routes";
 import "./TeamCard.css";
-import { Link } from "react-router";
 
 interface TeamCardProps {
   team: Team;
@@ -40,16 +39,14 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
 
   return (
     <article className="team-card">
-      <Link to={teamDetailRoute}>
-        <img
-          className="team-card__image"
-          src={imageUrl}
-          alt={altImageText}
-          width={447}
-          height={327}
-          loading={loading}
-        />
-      </Link>
+      <img
+        className="team-card__image"
+        src={imageUrl}
+        alt={altImageText}
+        width={447}
+        height={327}
+        loading={loading}
+      />
 
       <div className="team-card__information">
         <h2 className="team-card__name">{name}</h2>
@@ -61,7 +58,7 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
         <div className="button__container">
           <Button
             className="details-button"
-            children="Details"
+            children="View details"
             linkTo={teamDetailRoute}
           />
           <Button children="Delete" onClick={deleteTeam} />

@@ -19,7 +19,7 @@ const TeamDetailPage: React.FC = () => {
     name: "",
     ridersNames: [],
     debutYear: 0,
-    isOfficialTeam: false,
+    isOfficialTeam: true,
     championshipTitles: 0,
     imageUrl: "",
     altImageText: "",
