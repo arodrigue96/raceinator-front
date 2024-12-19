@@ -31,6 +31,8 @@ const TeamDetailPage: React.FC = () => {
   const fetchTeam = useCallback(async () => {
     dispatch(displayLoading());
 
+    scroll(0, 0);
+
     try {
       const fetchTeam = await teamsClient.getTeamById(teamId as string);
       setTeam(fetchTeam);

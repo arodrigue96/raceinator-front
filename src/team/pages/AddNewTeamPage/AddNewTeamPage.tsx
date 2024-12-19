@@ -32,6 +32,8 @@ const AddNewTeamPage: React.FC = () => {
     }
   };
 
+  scroll(0, 0);
+
   return (
     <>
       <h1 className="page-title">Add new team</h1>
