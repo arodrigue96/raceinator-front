@@ -3,10 +3,12 @@ import { Team } from "../types";
 
 interface TeamsState {
   teams: Team[];
+  team: Team | null;
 }
 
 const teamsInitialState: TeamsState = {
   teams: [],
+  team: null,
 };
 
 export const teamsSlice = createSlice({
@@ -19,8 +21,14 @@ export const teamsSlice = createSlice({
         teams: action.payload,
       };
     },
+    loadTeam: (state, action: PayloadAction<Team | null>) => {
+      return {
+        ...state,
+        team: action.payload,
+      };
+    },
   },
 });
 
-export const { loadTeams } = teamsSlice.actions;
+export const { loadTeams, loadTeam } = teamsSlice.actions;
 export default teamsSlice.reducer;
