@@ -1,12 +1,14 @@
 .nav-container {
   bottom: 0;
   position: fixed;
-  width: 100%;
+  left: 0;
+  right: 0;
 }
 
 .main-navigation {
   display: flex;
   justify-content: space-between;
+  margin: 0 auto;
   background-color: #f7f7f7;
   padding: 30px 53px;
   max-width: var(--container-max-width);
