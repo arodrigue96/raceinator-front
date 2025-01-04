@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { loadTeams } from "../slice";
+import { loadTeams } from "../slice/teamsSlice";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { loadTeamsError } from "../toasts/errors/errors";
 import { displayLoading, hideLoading } from "../../uiSlice";

@@ -16,7 +16,9 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team }) => {
     description,
   } = team;
 
-  const championshipTitles: number[] = Array(team.championshipTitles).fill(0);
+  const championshipTitles: number[] = Array(team.championshipTitles).fill(
+    null,
+  );
 
   return (
     <article className="team-detail">

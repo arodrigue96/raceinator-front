@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import TeamDetail from "../../components/TeamDetail/TeamDetail";
@@ -7,26 +7,16 @@ import { displayLoading, hideLoading } from "../../../uiSlice";
 import { loadTeamDetailError } from "../../toasts/errors/errors";
 import Loader from "../../../components/Loader/Loader";
 import { notFoundPage } from "../../../router/routes";
-import { Team } from "../../types";
+import { loadTeam } from "../../slice/teamsSlice";
 
 const TeamDetailPage: React.FC = () => {
-  const { teamId } = useParams<{ teamId: string }>();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const team = useAppSelector((state) => state.teamsState.team);
   const isLoading = useAppSelector((state) => state.uiState.isLoading);
 
-  const [team, setTeam] = useState<Team>({
-    _id: "",
-    name: "",
-    ridersNames: [],
-    debutYear: 0,
-    isOfficialTeam: true,
-    championshipTitles: 0,
-    imageUrl: "",
-    altImageText: "",
-    description: "",
-  });
-
-  const dispatch = useAppDispatch();
+  const { teamId } = useParams<{ teamId: string }>();
 
   const fetchTeam = useCallback(async () => {
     dispatch(displayLoading());
@@ -35,8 +25,8 @@ const TeamDetailPage: React.FC = () => {
 
     try {
       const fetchTeam = await teamsClient.getTeamById(teamId as string);
-      setTeam(fetchTeam);
 
+      dispatch(loadTeam(fetchTeam));
       dispatch(hideLoading());
     } catch {
       dispatch(hideLoading());
@@ -47,13 +37,19 @@ const TeamDetailPage: React.FC = () => {
   }, [dispatch, navigate, teamId]);
 
   useEffect(() => {
-    fetchTeam();
-  }, [fetchTeam]);
+    if (teamId) {
+      fetchTeam();
+    }
+
+    return () => {
+      dispatch(loadTeam(null));
+    };
+  }, [dispatch, fetchTeam, teamId]);
 
   return (
     <>
       {isLoading && <Loader />}
-      <TeamDetail team={team} />
+      {team && <TeamDetail team={team} />}
     </>
   );
 };

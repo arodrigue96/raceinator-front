@@ -82,6 +82,7 @@ The **Team Image** serves as a key visual highlight, providing immediate recogni
 **teams**
 
 - `loadTeams`: loads an array of teams into the state.
+- `loadTeam`: Loads a single team's details into the state.
 
 ### Data Description
 

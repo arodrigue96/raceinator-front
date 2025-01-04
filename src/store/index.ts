@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import teamsReducer from "../team/slice";
+import teamsReducer from "../team/slice/teamsSlice";
 import uiSliceReducer from "../uiSlice/index";
 
 export const store = configureStore({
