@@ -10,9 +10,11 @@ describe("Given the TeamsPage component", () => {
       const expectedLoaderText = /Loading Spinner/i;
 
       render(
-        <Provider store={store}>
-          <TeamsPage />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <TeamsPage />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const loader = screen.getByLabelText(expectedLoaderText);
@@ -24,9 +26,11 @@ describe("Given the TeamsPage component", () => {
       const titleText = /teams/i;
 
       render(
-        <Provider store={store}>
-          <TeamsPage />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <TeamsPage />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const pageTitle = screen.getByRole("heading", {
