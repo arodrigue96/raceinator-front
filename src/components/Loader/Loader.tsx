@@ -1,4 +1,4 @@
-import MoonLoader from "react-spinners/MoonLoader";
+import { MoonLoader } from "react-spinners";
 import "./Loader.css";
 
 interface LoaderProps {
