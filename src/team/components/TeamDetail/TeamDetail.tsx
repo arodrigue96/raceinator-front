@@ -27,9 +27,10 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team }) => {
         className="team-detail__image"
         src={imageUrl}
         alt={altImageText}
-        width={480}
-        height={304}
+        width={800}
+        height={450}
         fetchPriority="high"
+        decoding="async"
       />
       <div className="team-information">
         <div className="team-information__official-team">

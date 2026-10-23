@@ -45,9 +45,10 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, loading = "lazy" }) => {
           className="team-card__image"
           src={imageUrl}
           alt={altImageText}
-          width={447}
-          height={327}
+          width={800}
+          height={450}
           loading={loading}
+          decoding="async"
         />
       </Link>
 
