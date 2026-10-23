@@ -1,6 +1,6 @@
 import { MemoryRouter } from "react-router";
 import { render, screen } from "@testing-library/react";
-import { http, HttpResponse } from "msw";
+import { delay, http, HttpResponse } from "msw";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { store } from "../store";
@@ -151,11 +151,15 @@ describe("Given the AppRouter component", () => {
         const expectedLoaderText = /Loading Spinner/i;
         const buttonText = /Delete/i;
 
-        http.delete(`${apiRestUrl}/teams/${teamMock2._id}`, () => {
-          return HttpResponse.json<{ team: Team }>({
-            team: teamMock2,
-          });
-        });
+        server.use(
+          http.delete(`${apiRestUrl}/teams/:id`, async () => {
+            await delay(200);
+
+            return HttpResponse.json<{ team: Team }>({
+              team: teamMock2,
+            });
+          }),
+        );
 
         render(
           <MemoryRouter initialEntries={[teamsPage]}>
@@ -165,13 +169,13 @@ describe("Given the AppRouter component", () => {
           </MemoryRouter>,
         );
 
-        const deleteButton = screen.getAllByRole("button", {
+        const deleteButton = await screen.findAllByRole("button", {
           name: buttonText,
         });
 
         await user.click(deleteButton[0]);
 
-        const loader = screen.getByLabelText(expectedLoaderText);
+        const loader = await screen.findByLabelText(expectedLoaderText);
 
         expect(loader).toBeInTheDocument();
       });
