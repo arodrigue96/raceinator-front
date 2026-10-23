@@ -19,7 +19,6 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  font-size: 700;
 }
 
 .team-information__official-team {
