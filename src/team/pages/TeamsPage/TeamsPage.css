@@ -1,5 +1,6 @@
-.button__restore {
-  width: auto;
+.main-button.button__restore {
+  width: fit-content;
+  white-space: nowrap;
   padding: 11px 20px;
   margin-bottom: 16px;
 }
