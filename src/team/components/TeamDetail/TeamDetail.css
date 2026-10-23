@@ -40,5 +40,6 @@
 
 .team-information__championship-titles {
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
 }

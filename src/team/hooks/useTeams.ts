@@ -1,8 +1,9 @@
 import { useCallback } from "react";
 import { loadTeams } from "../slice/teamsSlice";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { loadTeamsError } from "../toasts/errors/errors";
+import { loadTeamsError, resetTeamsError } from "../toasts/errors/errors";
 import { displayLoading, hideLoading } from "../../uiSlice";
+import { resetTeamsFeedback } from "../toasts/success/success";
 import { teamsClient } from "../client/TeamsClient";
 
 const useTeams = () => {
@@ -25,9 +26,25 @@ const useTeams = () => {
     }
   }, [dispatch]);
 
+  const resetTeams = useCallback(async () => {
+    dispatch(displayLoading());
+
+    try {
+      const teamsData = await teamsClient.resetTeams();
+      dispatch(loadTeams(teamsData));
+
+      dispatch(hideLoading());
+      resetTeamsFeedback();
+    } catch {
+      dispatch(hideLoading());
+      resetTeamsError();
+    }
+  }, [dispatch]);
+
   return {
     teams,
     fetchTeams,
+    resetTeams,
     isLoading,
   };
 };

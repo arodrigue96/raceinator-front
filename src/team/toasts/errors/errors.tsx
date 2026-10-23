@@ -42,3 +42,11 @@ export const deleteTeamError = (error: Error) => {
     },
   );
 };
+
+export const resetTeamsError = () => {
+  toast.error(`Failed to restore teams`, {
+    className: "toast__errors",
+    closeButton: false,
+    icon: <img src="/icons/alert.svg" alt="" />,
+  });
+};

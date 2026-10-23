@@ -34,7 +34,7 @@ const TeamDetail: React.FC<TeamDetailProps> = ({ team }) => {
       />
       <div className="team-information">
         <div className="team-information__official-team">
-          <h2>It is official team?</h2>
+          <h2>Official team?</h2>
           {isOfficialTeam ? (
             <img
               src="/icons/official-team.svg"

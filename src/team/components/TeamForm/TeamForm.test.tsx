@@ -9,7 +9,7 @@ describe("Given the TeamForm component", () => {
   const mockFunction = vi.fn();
 
   describe("When it's rendered", () => {
-    test("Then it should show 'Name', 'Rider name 1', 'Rider name 2', 'Debut year in MotoGP', 'Is it a Official Team', 'Number of Championship titles', 'Image URL', 'Alternative Text' and 'Description' fields", () => {
+    test("Then it should show 'Name', 'Rider name 1', 'Rider name 2', 'Debut year in MotoGP', 'Is it an official team?', 'Number of Championship titles', 'Image URL', 'Alternative Text' and 'Description' fields", () => {
       render(<TeamForm submitTeamData={mockFunction} />);
 
       const nameField = screen.getByLabelText("Name");
@@ -17,7 +17,7 @@ describe("Given the TeamForm component", () => {
       const riderName2Field = screen.getByLabelText(/rider name 2/i);
       const debutYearField = screen.getByLabelText(/debut year in motogp/i);
       const isOfficialTeamField = screen.getByLabelText(
-        /is it a official team?/i,
+        /is it an official team/i,
       );
       const championshipTitlesField = screen.getByLabelText(
         /number of championship titles/i,
@@ -73,7 +73,7 @@ describe("Given the TeamForm component", () => {
       const riderName2Field = screen.getByLabelText(/rider name 2/i);
       const debutYearField = screen.getByLabelText(/debut year in motogp/i);
       const isOfficialTeamField = screen.getByLabelText(
-        /is it a official team?/i,
+        /is it an official team/i,
       );
       const championshipTitlesField = screen.getByLabelText(
         /number of championship titles/i,
@@ -99,6 +99,36 @@ describe("Given the TeamForm component", () => {
       await user.type(descriptionField, "Aniol will have a team one day");
 
       expect(createTeamButton).toBeEnabled();
+    });
+  });
+
+  describe("When it's rendered", () => {
+    test("Then the fields should carry the server constraints", () => {
+      render(<TeamForm submitTeamData={mockFunction} />);
+
+      expect(screen.getByLabelText("Name")).toHaveAttribute("minlength", "2");
+      expect(screen.getByLabelText("Name")).toHaveAttribute("maxlength", "60");
+      expect(screen.getByLabelText(/rider name 1/i)).toHaveAttribute(
+        "maxlength",
+        "60",
+      );
+      expect(screen.getByLabelText(/number of championship titles/i)).toHaveAttribute(
+        "max",
+        "99",
+      );
+      expect(screen.getByLabelText(/image url/i)).toHaveAttribute(
+        "maxlength",
+        "500",
+      );
+      expect(screen.getByLabelText(/image url/i)).toHaveAttribute("pattern");
+      expect(screen.getByLabelText(/alternative text/i)).toHaveAttribute(
+        "maxlength",
+        "150",
+      );
+      expect(screen.getByLabelText(/description/i)).toHaveAttribute(
+        "minlength",
+        "10",
+      );
     });
   });
 });

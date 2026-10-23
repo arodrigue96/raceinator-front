@@ -14,6 +14,12 @@ export const handlers = [
     });
   }),
 
+  http.post(`${apiRestUrl}/teams/reset`, () => {
+    return HttpResponse.json<{ teams: Team[] }>({
+      teams: teamsMock,
+    });
+  }),
+
   http.post(`${apiRestUrl}/teams`, () => {
     return HttpResponse.json<{ teams: Team }>({
       teams: teamMock3,

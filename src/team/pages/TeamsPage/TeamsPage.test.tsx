@@ -1,4 +1,10 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { http, HttpResponse } from "msw";
+import { toast } from "react-toastify";
+import { server } from "../../../mocks/node";
+import { apiRestUrl } from "../../client/TeamsClient";
 import TeamsPage from "./TeamsPage";
 import { Provider } from "react-redux";
 import { store } from "../../../store";
@@ -83,6 +89,54 @@ describe("Given the TeamsPage component", () => {
 
       expect(teamName1).toBeInTheDocument();
       expect(teamName2).toBeInTheDocument();
+    });
+  });
+
+  describe("When the user clicks 'Restore teams'", () => {
+    const renderPage = () =>
+      render(
+        <MemoryRouter>
+          <Provider store={store}>
+            <TeamsPage />
+          </Provider>
+        </MemoryRouter>,
+      );
+
+    test("Then it should show a 'Teams restored' success toast", async () => {
+      const successSpy = vi.spyOn(toast, "success");
+      renderPage();
+
+      await userEvent.click(
+        screen.getByRole("button", { name: /restore teams/i }),
+      );
+
+      await vi.waitFor(() =>
+        expect(successSpy).toHaveBeenCalledWith(
+          "Teams restored",
+          expect.anything(),
+        ),
+      );
+    });
+
+    test("Then it should show a 'Failed to restore teams' error toast if the API fails", async () => {
+      server.use(
+        http.post(`${apiRestUrl}/teams/reset`, () =>
+          HttpResponse.json({}, { status: 500 }),
+        ),
+      );
+      const errorSpy = vi.spyOn(toast, "error");
+      renderPage();
+
+      await userEvent.click(
+        screen.getByRole("button", { name: /restore teams/i }),
+      );
+
+      await vi.waitFor(() =>
+        expect(errorSpy).toHaveBeenCalledWith(
+          "Failed to restore teams",
+          expect.anything(),
+        ),
+      );
     });
   });
 });

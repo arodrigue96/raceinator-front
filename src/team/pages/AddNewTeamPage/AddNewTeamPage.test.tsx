@@ -24,7 +24,7 @@ describe("Given the AddNewTeamPage component", () => {
       expect(pageTitle).toBeInTheDocument();
     });
 
-    test("Then it should show 'Name', 'Rider name 1', 'Rider name 2', 'Debut year in MotoGP', 'Is it a Official Team', 'Number of Championship titles', 'Image URL', 'Alternative Text' and 'Description' fields", () => {
+    test("Then it should show 'Name', 'Rider name 1', 'Rider name 2', 'Debut year in MotoGP', 'Is it an official team?', 'Number of Championship titles', 'Image URL', 'Alternative Text' and 'Description' fields", () => {
       render(
         <MemoryRouter>
           <Provider store={store}>
@@ -38,7 +38,7 @@ describe("Given the AddNewTeamPage component", () => {
       const riderName2Field = screen.getByLabelText(/rider name 2/i);
       const debutYearField = screen.getByLabelText(/debut year in motogp/i);
       const isOfficialTeamField = screen.getByLabelText(
-        /is it a official team?/i,
+        /is it an official team/i,
       );
       const championshipTitlesField = screen.getByLabelText(
         /number of championship titles/i,

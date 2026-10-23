@@ -25,7 +25,7 @@ describe("Given the AppRouter component", () => {
     const riderName2Field = screen.getByLabelText(/rider name 2/i);
     const debutYearField = screen.getByLabelText(/debut year in motogp/i);
     const isOfficialTeamField = screen.getByLabelText(
-      /is it a official team?/i,
+      /is it an official team/i,
     );
     const championshipTitlesField = screen.getByLabelText(
       /number of championship titles/i,

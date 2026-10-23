@@ -2,6 +2,8 @@
   --button-main-color: #c80502;
   --button-secondary-main-color: #424242;
   --container-max-width: 500px;
+  --button-disabled-bg: #d4d4d4;
+  --button-disabled-color: #1f1f1f;
 }
 
 *,
@@ -42,7 +44,8 @@ button {
 
 button:disabled {
   cursor: not-allowed;
-  background-color: #808080;
+  color: var(--button-disabled-color);
+  background-color: var(--button-disabled-bg);
 }
 
 ul,

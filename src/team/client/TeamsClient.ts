@@ -35,11 +35,29 @@ class TeamsClient implements TeamsClientStructure {
       throw new Error(`A team with ${teamData.name} name already exists`);
     }
 
+    if (response.status === 400) {
+      throw new Error("Invalid team data");
+    }
+
     if (!response.ok) {
       throw new Error("Failed to add a new team");
     }
 
     const { teams } = (await response.json()) as { teams: Team };
+
+    return teams;
+  }
+
+  async resetTeams(): Promise<Team[]> {
+    const response = await fetch(`${this.apiRestUrl}/teams/reset`, {
+      method: "POST",
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to restore teams");
+    }
+
+    const { teams } = (await response.json()) as { teams: Team[] };
 
     return teams;
   }

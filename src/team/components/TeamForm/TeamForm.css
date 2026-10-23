@@ -12,8 +12,8 @@
 
 .team-form__riders-name {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .team-form__official-team {

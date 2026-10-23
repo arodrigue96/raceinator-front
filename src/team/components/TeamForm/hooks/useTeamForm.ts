@@ -69,14 +69,14 @@ const useTeamForm = () => {
     } = teamData;
 
     return {
-      name: name,
-      ridersNames: [riderName1, riderName2],
+      name: name.trim(),
+      ridersNames: [riderName1.trim(), riderName2.trim()],
       debutYear: debutYear,
       isOfficialTeam: isOfficialTeam,
       championshipTitles: championshipTitles,
-      imageUrl: imageUrl,
-      altImageText: altImageText,
-      description: description,
+      imageUrl: imageUrl.trim(),
+      altImageText: altImageText.trim(),
+      description: description.trim(),
     };
   };
 

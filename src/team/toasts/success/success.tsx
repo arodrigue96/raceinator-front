@@ -15,3 +15,10 @@ export const deleteTeamFeedback = () => {
     icon: <img src="/icons/bin.svg" alt="" />,
   });
 };
+
+export const resetTeamsFeedback = () => {
+  toast.success(`Teams restored`, {
+    className: "toast__success",
+    closeButton: false,
+  });
+};

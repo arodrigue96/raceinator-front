@@ -1,3 +1,6 @@
+import { http, HttpResponse } from "msw";
+import { server } from "../../../mocks/node";
+import { apiRestUrl } from "../TeamsClient";
 import { TeamWithoutId } from "../../types";
 import { teamsClient } from "../TeamsClient";
 
@@ -18,6 +21,20 @@ describe("Given the createTeam method of TeamsClient class", () => {
       const newTeam = await teamsClient.createTeam(teamData);
 
       expect(newTeam).toEqual(expect.objectContaining(teamData));
+    });
+  });
+
+  describe("When the API answers 400", () => {
+    test("Then it should throw 'Invalid team data'", async () => {
+      server.use(
+        http.post(`${apiRestUrl}/teams`, () =>
+          HttpResponse.json({}, { status: 400 }),
+        ),
+      );
+
+      await expect(
+        teamsClient.createTeam({} as TeamWithoutId),
+      ).rejects.toThrow("Invalid team data");
     });
   });
 });

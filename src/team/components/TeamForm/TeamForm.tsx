@@ -50,6 +50,8 @@ const TeamForm: React.FC<TeamFormProps> = ({ submitTeamData }) => {
           className="team-form__input"
           type="text"
           id="name"
+          minLength={2}
+          maxLength={60}
           value={name}
           onChange={updateTeamData}
           required
@@ -64,6 +66,8 @@ const TeamForm: React.FC<TeamFormProps> = ({ submitTeamData }) => {
               className="team-form__input"
               type="text"
               id="riderName1"
+          minLength={2}
+              maxLength={60}
               value={riderName1}
               onChange={updateTeamData}
               required
@@ -75,6 +79,8 @@ const TeamForm: React.FC<TeamFormProps> = ({ submitTeamData }) => {
               className="team-form__input"
               type="text"
               id="riderName2"
+          minLength={2}
+              maxLength={60}
               value={riderName2}
               onChange={updateTeamData}
               required
@@ -96,7 +102,7 @@ const TeamForm: React.FC<TeamFormProps> = ({ submitTeamData }) => {
         />
       </div>
       <div className="team-form__info team-form__official-team">
-        <label htmlFor="isOfficialTeam">Is it a Official Team?</label>
+        <label htmlFor="isOfficialTeam">Is it an official team?</label>
         <input
           className="team-form__input team-form__checkbox"
           type="checkbox"
@@ -113,6 +119,8 @@ const TeamForm: React.FC<TeamFormProps> = ({ submitTeamData }) => {
           className="team-form__input"
           type="number"
           min={0}
+          max={99}
+          step={1}
           id="championshipTitles"
           value={championshipTitles}
           onChange={updateTeamData}
@@ -123,8 +131,10 @@ const TeamForm: React.FC<TeamFormProps> = ({ submitTeamData }) => {
         <label htmlFor="imageUrl">Image URL</label>
         <input
           className="team-form__input"
-          type="url"
+          type="text"
           id="imageUrl"
+          maxLength={500}
+          pattern="https://.+|/images/teams/[a-z0-9\-]+\.webp"
           value={imageUrl}
           onChange={updateTeamData}
           required
@@ -136,6 +146,8 @@ const TeamForm: React.FC<TeamFormProps> = ({ submitTeamData }) => {
           className="team-form__input"
           type="text"
           id="altImageText"
+          minLength={2}
+          maxLength={150}
           value={altImageText}
           onChange={updateTeamData}
           required
@@ -146,6 +158,8 @@ const TeamForm: React.FC<TeamFormProps> = ({ submitTeamData }) => {
         <textarea
           className="team-form__input team-form__description"
           id="description"
+          minLength={10}
+          maxLength={1000}
           value={description}
           onChange={updateTeamData}
           required
