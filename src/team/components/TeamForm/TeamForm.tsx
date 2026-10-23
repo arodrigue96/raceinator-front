@@ -88,7 +88,7 @@ const TeamForm: React.FC<TeamFormProps> = ({ submitTeamData }) => {
           className="team-form__input"
           type="number"
           min={1949}
-          max={2025}
+          max={new Date().getFullYear()}
           id="debutYear"
           value={debutYear}
           onChange={updateTeamData}
